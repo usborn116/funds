@@ -1,0 +1,17 @@
+<div id="<%= dom_id account %>">
+  <p>
+    <strong>Name:</strong>
+    <%= account.name %>
+  </p>
+
+  <p>
+    <strong>Amount:</strong>
+    $<%= number_with_precision(account.amount, :precision => 2) %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= account.user_id %>
+  </p>
+
+</div>

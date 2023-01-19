@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+
+<% if user_signed_in? %>
+  <% f = number_with_precision(Fund.sum(:allocated), :precision => 2) %>
+  <% a = number_with_precision(Account.sum(:amount), :precision => 2)%>
+  <% d = number_with_precision((Account.sum(:amount) - Fund.sum(:allocated)) , :precision => 2)%>
+  <h1><%=current_user.name %>'s Funds</h1>
+  <h2>You have $<%= f%> allocated in your funds, and $<%= a%> in your accounts total</h2>
+  <h3>You have $<%= d %> left to allocate</h3>
+
+  <h2>FUNDS</h2>
+  <h4>Total allocated funds</h4>$<%= f %>
+  <div id="funds">
+    <% @funds.each do |fund| %>
+      <%= render fund %>
+      <p>
+        <%= link_to "Show this fund", fund %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to "New fund", new_fund_path %>
+
+  <h2>ACCOUNTS</h2>
+  <h4>Total Amount in accounts</h4>$<%= a%>
+  <div id="accounts">
+    <% @accounts.each do |account| %>
+      <%= render account %>
+      <p>
+        <%= link_to "Show this account", account %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to "New account", new_account_path %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+
+<% else %>
+  <h1>Sign Into Your Account</h1>
+  <%= link_to "Sign in", new_user_session_path %> 
+  <h1>Create an Account</h1>
+  <%= link_to "Sign up", new_user_registration_path %> 
+<% end %>

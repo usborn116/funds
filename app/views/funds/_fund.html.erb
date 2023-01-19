@@ -1,0 +1,22 @@
+<div id="<%= dom_id fund %>">
+  <p>
+    <strong>Name:</strong>
+    <%= fund.name %>
+  </p>
+
+  <p>
+    <strong>Target:</strong>
+    $<%= number_with_precision(fund.target, :precision => 2) %>
+  </p>
+
+  <p>
+    <strong>Allocated:</strong>
+    $<%= number_with_precision(fund.allocated, :precision => 2) %>
+  </p>
+
+  <p>
+    <strong>Target date:</strong>
+    <%= fund.target_date %>
+  </p>
+
+</div>
