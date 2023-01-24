@@ -1,9 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <% if user_signed_in? %>
-  <% f = number_with_precision(Fund.sum(:allocated), :precision => 2) %>
-  <% a = number_with_precision(Account.sum(:amount), :precision => 2)%>
-  <% d = number_with_precision((Account.sum(:amount) - Fund.sum(:allocated)) , :precision => 2)%>
+  <% f = number_with_precision(@funds.sum(:allocated), :precision => 2) %>
+  <% a = number_with_precision(@accounts.sum(:amount), :precision => 2)%>
+  <% d = number_with_precision((@accounts.sum(:amount) - @funds.sum(:allocated)) , :precision => 2)%>
   <h1><%=current_user.name %>'s Funds</h1>
   <h2>You have $<%= f%> allocated in your funds, and $<%= a%> in your accounts total</h2>
   <h3>You have $<%= d %> left to allocate</h3>

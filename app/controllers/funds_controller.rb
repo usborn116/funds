@@ -1,10 +1,11 @@
 class FundsController < ApplicationController
   before_action :set_fund, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /funds or /funds.json
   def index
-    @funds = Fund.all
-    @accounts = Account.all
+    @funds = Fund.where(user_id: current_user.id)
+    @accounts = Account.where(user_id: current_user.id)
   end
 
   # GET /funds/1 or /funds/1.json
