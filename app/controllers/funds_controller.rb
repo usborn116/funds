@@ -1,11 +1,13 @@
 class FundsController < ApplicationController
-  before_action :set_fund, only: %i[ show edit update destroy ]
+  #before_action :set_fund, only: %i[ show edit update destroy ]
+  protect_from_forgery with: :null_session
   before_action :authenticate_user!
 
   # GET /funds or /funds.json
   def index
     @funds = Fund.where(user_id: current_user.id)
     @accounts = Account.where(user_id: current_user.id)
+    render json: @funds
   end
 
   # GET /funds/1 or /funds/1.json
@@ -25,14 +27,10 @@ class FundsController < ApplicationController
   def create
     @fund = Fund.new(fund_params)
 
-    respond_to do |format|
-      if @fund.save
-        format.html { redirect_to fund_url(@fund), notice: "Fund was successfully created." }
-        format.json { render :show, status: :created, location: @fund }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @fund.errors, status: :unprocessable_entity }
-      end
+    if @fund.save
+      render json: @fund, status: :created, location: fund_path(@fund)
+    else
+      render json: @fund.errors, status: :unprocessable_entity
     end
   end
 

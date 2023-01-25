@@ -3,7 +3,9 @@ class AccountsController < ApplicationController
 
   # GET /accounts or /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = Account.where(user_id: current_user.id)
+    render json: @accounts
+
   end
 
   # GET /accounts/1 or /accounts/1.json
