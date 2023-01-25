@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  #before_action :set_account, only: %i[ show edit update destroy ]
+  before_action :set_account, only: %i[ show edit update destroy ]
   protect_from_forgery with: :null_session
   before_action :authenticate_user!
   
@@ -53,10 +53,7 @@ class AccountsController < ApplicationController
   def destroy
     @account.destroy
 
-    respond_to do |format|
-      format.html { redirect_to accounts_url, notice: "Account was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    render json: { message: 'account was deleted'}
   end
 
   private

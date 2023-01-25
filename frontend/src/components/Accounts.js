@@ -2,7 +2,7 @@ import { useState,useEffect } from "react"
 import Account from "./Account"
 
 const Accounts=({currUser})=>{
-    const [message, setMessage]=useState([])
+    const [accounts, setAccounts]=useState([])
     const getText=async ()=>{
         try {
             const response=await fetch("http://localhost:3000/accounts", {
@@ -14,12 +14,12 @@ const Accounts=({currUser})=>{
             })
             if(!response.ok) throw Error
             const data=await response.json()
-            setMessage(data)
+            setAccounts(data)
             console.log(data)
         }
         catch(error){
             console.log("error", error)
-            setMessage(null)
+            setAccounts(null)
         }
     }
     useEffect(()=>{
@@ -30,8 +30,8 @@ const Accounts=({currUser})=>{
         /* <div>{message}</div> */
         <div>
             <h2>ACCOUNTS</h2><br></br>
-            {message.map((message) =>
-                <Account data={message} currUser={currUser} key={message.id} setMessage={setMessage}/>
+            {accounts.map((account) =>
+                <Account accounts={accounts} data={account} currUser={currUser} key={account.id} setAccounts={setAccounts}/>
             )}
         </div>
     )

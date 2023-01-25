@@ -1,9 +1,9 @@
 import { useRef } from "react"
 
-const NewFund=({currUser, setMessage})=>{
+const NewFund=({currUser, setFunds})=>{
     const formRef = useRef()
 
-    const newf=async (fundInfo, setMessage)=>{
+    const newf=async (fundInfo, setFunds)=>{
         const url="http://localhost:3000/funds"
         try{
             const response=await fetch(url, {
@@ -17,7 +17,7 @@ const NewFund=({currUser, setMessage})=>{
             }) 
             const data=await response.json()
             if(!response.ok) throw data.error
-            setMessage(prevmessage => [...prevmessage, data])
+            setFunds(prevfunds => [...prevfunds, data])
         } catch (error){
             console.log("error", error)
         }
@@ -30,7 +30,7 @@ const NewFund=({currUser, setMessage})=>{
         const fundInfo={
             "fund":{ name: data.name, allocated: data.allocated, target: data.target, target_date: data.date, user_id: data.userid}
         }
-        newf(fundInfo, setMessage)
+        newf(fundInfo, setFunds)
         e.target.reset()
     }
 

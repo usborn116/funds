@@ -1,5 +1,5 @@
 class FundsController < ApplicationController
-  #before_action :set_fund, only: %i[ show edit update destroy ]
+  before_action :set_fund, only: %i[ show edit update destroy ]
   protect_from_forgery with: :null_session
   before_action :authenticate_user!
 
@@ -50,10 +50,7 @@ class FundsController < ApplicationController
   def destroy
     @fund.destroy
 
-    respond_to do |format|
-      format.html { redirect_to funds_url, notice: "Fund was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    render json: { message: 'fund was deleted'}
   end
 
   private
