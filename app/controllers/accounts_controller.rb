@@ -1,5 +1,9 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ show edit update destroy ]
+  #before_action :set_account, only: %i[ show edit update destroy ]
+  protect_from_forgery with: :null_session
+  before_action :authenticate_user!
+  
+
 
   # GET /accounts or /accounts.json
   def index
@@ -25,14 +29,10 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
 
-    respond_to do |format|
-      if @account.save
-        format.html { redirect_to account_url(@account), notice: "Account was successfully created." }
-        format.json { render :show, status: :created, location: @account }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
-      end
+    if @account.save
+      render json: @account, status: :created, location: account_path(@account)
+    else
+      render json: @account.errors, status: :unprocessable_entity
     end
   end
 

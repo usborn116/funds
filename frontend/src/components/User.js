@@ -10,7 +10,7 @@ const User = ({currUser, setCurrUser}) => {
     if(currUser) 
         return (
             <div>
-            Hello {currUser.name}
+            <h1>Hello {currUser.name}</h1>
             <Funds currUser={currUser}/>
             <Accounts currUser={currUser}/>
             <Logout setCurrUser={setCurrUser}/>

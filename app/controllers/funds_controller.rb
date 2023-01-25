@@ -6,7 +6,6 @@ class FundsController < ApplicationController
   # GET /funds or /funds.json
   def index
     @funds = Fund.where(user_id: current_user.id)
-    @accounts = Account.where(user_id: current_user.id)
     render json: @funds
   end
 

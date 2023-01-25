@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react"
 import NewFund from "./NewFund"
+import Fund from "./Fund"
 
 const Funds=({currUser})=>{
     const [message, setMessage]=useState([])
@@ -29,14 +30,10 @@ const Funds=({currUser})=>{
     return(
         /* <div>{message}</div> */
         <div>
+            <h2>FUNDS</h2><br></br>
             {message.map((message) =>
-                <div>
-                <p>{message.name}</p>
-                <p>{message.target}</p>
-                <p>{message.allocated}</p>
-                </div>
+                <Fund data={message} currUser={currUser} key={message.id} setMessage={setMessage}/>
             )}
-            <NewFund setMessage={setMessage} currUser={currUser}/>
         </div>
     )
 }

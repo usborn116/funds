@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react"
+import Account from "./Account"
 
 const Accounts=({currUser})=>{
     const [message, setMessage]=useState([])
@@ -28,11 +29,9 @@ const Accounts=({currUser})=>{
     return(
         /* <div>{message}</div> */
         <div>
+            <h2>ACCOUNTS</h2><br></br>
             {message.map((message) =>
-                <div>
-                <p>{message.name}</p>
-                <p>{message.amount}</p>
-                </div>
+                <Account data={message} currUser={currUser} key={message.id} setMessage={setMessage}/>
             )}
         </div>
     )
