@@ -4,6 +4,7 @@ import Fund from "./Fund"
 
 const Funds=({currUser})=>{
     const [funds, setFunds]=useState([])
+    const [updates, setUpdates]=useState(0)
     const getText=async ()=>{
         try {
             const response=await fetch("http://localhost:3000/funds", {
@@ -16,6 +17,7 @@ const Funds=({currUser})=>{
             if(!response.ok) throw Error
             const data=await response.json()
             setFunds(data)
+            console.log(data)
         }
         catch(error){
             console.log("error", error)
@@ -25,13 +27,13 @@ const Funds=({currUser})=>{
     useEffect(()=>{
         if(currUser)
             getText()
-    },[currUser])
+    },[currUser, updates])
     return(
         /* <div>{message}</div> */
         <div>
             <h2>FUNDS</h2><br></br>
-            {funds.map((message) =>
-                <Fund funds={funds} data={message} currUser={currUser} key={message.id} setFunds={setFunds}/>
+            {funds.map((fund) =>
+                <Fund funds={funds} data={fund} currUser={currUser} key={fund.id} setFunds={setFunds} setUpdates={setUpdates}/>
             )}
             <NewFund currUser={currUser} setFunds={setFunds}/>
         </div>

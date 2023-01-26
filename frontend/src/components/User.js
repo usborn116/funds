@@ -4,6 +4,8 @@ import Logout from './Logout'
 import { useState } from "react";
 import Funds from "./Funds";
 import Accounts from "./Accounts"
+import DeleteUser from "./DeleteUser";
+import EditUser from "./EditUser";
 
 const User = ({currUser, setCurrUser}) => {
     const [show, setShow]=useState(true)
@@ -14,12 +16,14 @@ const User = ({currUser, setCurrUser}) => {
             <Funds currUser={currUser}/>
             <Accounts currUser={currUser}/>
             <Logout setCurrUser={setCurrUser}/>
+            <DeleteUser setCurrUser={setCurrUser} />
+            <EditUser setCurrUser={setCurrUser} currUser={currUser} />
             </div>
         )
     return (
         <div>
             { show?
-                <Login setCurrUser={setCurrUser} setShow={setShow}/>  
+                <Login setCurrUser={setCurrUser} setShow={setShow}/>            
                 :
                 <Signup setCurrUser={setCurrUser}  setShow={setShow} />
             }

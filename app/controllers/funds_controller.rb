@@ -35,14 +35,10 @@ class FundsController < ApplicationController
 
   # PATCH/PUT /funds/1 or /funds/1.json
   def update
-    respond_to do |format|
-      if @fund.update(fund_params)
-        format.html { redirect_to fund_url(@fund), notice: "Fund was successfully updated." }
-        format.json { render :show, status: :ok, location: @fund }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @fund.errors, status: :unprocessable_entity }
-      end
+    if @fund.update(fund_params)
+      render json: @fund, location: fund_path(@fund)
+    else
+      render json: @fund.errors, status: :unprocessable_entity
     end
   end
 

@@ -3,6 +3,7 @@ import Account from "./Account"
 
 const Accounts=({currUser})=>{
     const [accounts, setAccounts]=useState([])
+    const [updates, setUpdates]=useState(0)
     const getText=async ()=>{
         try {
             const response=await fetch("http://localhost:3000/accounts", {
@@ -25,13 +26,13 @@ const Accounts=({currUser})=>{
     useEffect(()=>{
         if(currUser)
             getText()
-    },[currUser])
+    },[currUser, updates])
     return(
         /* <div>{message}</div> */
         <div>
             <h2>ACCOUNTS</h2><br></br>
             {accounts.map((account) =>
-                <Account accounts={accounts} data={account} currUser={currUser} key={account.id} setAccounts={setAccounts}/>
+                <Account accounts={accounts} data={account} currUser={currUser} key={account.id} setAccounts={setAccounts} setUpdates={setUpdates}/>
             )}
         </div>
     )
