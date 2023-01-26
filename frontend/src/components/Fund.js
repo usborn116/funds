@@ -4,7 +4,6 @@ import UpdateFund from "./UpdateFund";
 const Fund = ({funds, currUser, data, setFunds, setUpdates}) => {
     const {id, name, allocated, target, target_date } = data;
     const ratio = (allocated/target);
-    console.log(data)
 
     return (
         <section className="fundtracker">

@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     }
   resources :funds
   resources :accounts
+  resource :user, only: [:show, :update]
 end

@@ -16,7 +16,6 @@ const Accounts=({currUser})=>{
             if(!response.ok) throw Error
             const data=await response.json()
             setAccounts(data)
-            console.log(data)
         }
         catch(error){
             console.log("error", error)

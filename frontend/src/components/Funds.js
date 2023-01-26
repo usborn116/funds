@@ -17,7 +17,6 @@ const Funds=({currUser})=>{
             if(!response.ok) throw Error
             const data=await response.json()
             setFunds(data)
-            console.log(data)
         }
         catch(error){
             console.log("error", error)

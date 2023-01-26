@@ -3,7 +3,7 @@ import { useRef } from "react"
 const EditUser=({setCurrUser, setShow, currUser})=>{
     const formRef = useRef()
     const signup=async (userInfo, setCurrUser)=>{
-        const url="http://localhost:3000/signup"
+        const url=`http://localhost:3000/signup`
         try{
             const response=await fetch(url, {
                 method: 'put',
@@ -26,7 +26,7 @@ const EditUser=({setCurrUser, setShow, currUser})=>{
         const formData=new FormData(formRef.current)
         const data=Object.fromEntries(formData)
         const userInfo={
-            "user":{ name: data.name, email: data.email, password: data.password, id: data.userid }
+            "user":{ name: data.name, email: data.email, password: data.password}
         }
         signup(userInfo, setCurrUser)
         e.target.reset()
