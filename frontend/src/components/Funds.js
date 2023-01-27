@@ -31,6 +31,7 @@ const Funds=({currUser, setCurrUser, setTotFunds})=>{
         if(currUser)
             getText()
     },[currUser, updates])
+    
     if (currUser.id)
     return(
         /* <div>{message}</div> */

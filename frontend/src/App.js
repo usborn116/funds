@@ -10,19 +10,12 @@ import usePersistedState from 'use-persisted-state-hook'
 const App=()=>{
   const [currUser, setCurrUser]= usePersistedState('currUser', {name: null, id: null, email: null})
   console.log(currUser)
-  if (currUser.id)
-    return (
-      <div className="App">
-        <h1>Welcome to the Funds app!</h1>
-        <NavBar currUser={currUser} setCurrUser={setCurrUser}/>
-      </div>
-    )
-    return (
-      <div className="App">
+  return (
+    <div className="App">
       <h1>Welcome to the Funds app!</h1>
       <NavBar currUser={currUser} setCurrUser={setCurrUser}/>
-      </div>
-    )
+    </div>
+  )
 }
 
 export default App;

@@ -15,8 +15,8 @@ const User = ({currUser, setCurrUser, totAccts, totFunds}) => {
         return (
             <div>
             <h1>Hello {currUser.name} at {currUser.email}</h1>
-            <h2>Total in accounts: {totAccts}</h2>
-            <h2>Total in Funds: {totFunds}</h2>
+            <h2>Total in accounts: ${totAccts}</h2>
+            <h2>Total in Funds: ${totFunds}</h2>
             <ul id='nav-list'>
                 <li><a href="http://localhost:4000/accounts">View Accounts</a></li>
                 <li><a href="http://localhost:4000/funds">View Funds</a></li>

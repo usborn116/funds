@@ -14,8 +14,8 @@ import usePersistedState from 'use-persisted-state-hook'
 
 function NavBar({currUser, setCurrUser}) {
     const [show, setShow]=useState(true)
-    const [totAccts, setTotAccts]=usePersistedState(0)
-    const [totFunds, setTotFunds]=usePersistedState(0)
+    const [totAccts, setTotAccts]=usePersistedState("totAccts", 0)
+    const [totFunds, setTotFunds]=usePersistedState("totFunds", 0)
 
     if(!currUser) 
         return (
