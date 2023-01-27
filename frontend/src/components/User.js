@@ -7,17 +7,22 @@ import Accounts from "./Accounts"
 import DeleteUser from "./DeleteUser";
 import EditUser from "./EditUser";
 
-const User = ({currUser, setCurrUser}) => {
+const User = ({currUser, setCurrUser, totAccts, totFunds}) => {
     const [show, setShow]=useState(true)
-    if(currUser) 
+
+    console.log(currUser)
+    if(currUser.id) 
         return (
             <div>
             <h1>Hello {currUser.name} at {currUser.email}</h1>
-            <Funds currUser={currUser}/>
-            <Accounts currUser={currUser}/>
+            <h2>Total in accounts: {totAccts}</h2>
+            <h2>Total in Funds: {totFunds}</h2>
+            <ul id='nav-list'>
+                <li><a href="http://localhost:4000/accounts">View Accounts</a></li>
+                <li><a href="http://localhost:4000/funds">View Funds</a></li>
+                <li><a href="http://localhost:4000/user/edituser">Edit Your Profile</a></li>
+            </ul>
             <Logout setCurrUser={setCurrUser}/>
-            <DeleteUser setCurrUser={setCurrUser} />
-            <EditUser setCurrUser={setCurrUser} currUser={currUser} />
             </div>
         )
     return (

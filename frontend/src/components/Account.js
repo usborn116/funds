@@ -1,5 +1,6 @@
 import DeleteAccount from "./DeleteAccount";
 import UpdateAccount from "./UpdateAccount";
+import {useState} from 'react'
 
 const Account = ({currUser, data, setAccounts, accounts, setUpdates}) => {
     const {id, name, amount } = data;
@@ -7,8 +8,13 @@ const Account = ({currUser, data, setAccounts, accounts, setUpdates}) => {
     return (
         <section className="accttracker">
             <h4 className='title'>Your {name} account has ${amount} </h4>
-            <DeleteAccount currUser={currUser} id={id} setAccounts={setAccounts} accounts={accounts} />
+            <details>
+            <summary>
+                Edit this account
+            </summary>
             <UpdateAccount currUser={currUser} id={id} setAccounts={setAccounts} accounts={accounts} setUpdates={setUpdates} data={data} />
+            </details>
+            <DeleteAccount currUser={currUser} id={id} setAccounts={setAccounts} accounts={accounts} />
         </section>
     )
 

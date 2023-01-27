@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Login = ({setCurrUser, setShow}) =>{
   const formRef=useRef()
@@ -36,6 +37,7 @@ const Login = ({setCurrUser, setShow}) =>{
     e.preventDefault()
     setShow(false)
   }
+
   return(
     <div>
       <form ref={formRef} onSubmit={handleSubmit}>

@@ -1,6 +1,6 @@
 import { useRef } from "react"
 
-const NewAccount=({currUser, setMessage})=>{
+const NewAccount=({currUser, setAccounts})=>{
     const formRef = useRef()
 
     const newf=async (acctInfo, setMessage)=>{
@@ -17,7 +17,7 @@ const NewAccount=({currUser, setMessage})=>{
             }) 
             const data=await response.json()
             if(!response.ok) throw data.error
-            setMessage(prevmessage => [...prevmessage, data])
+            setAccounts(prevmessage => [...prevmessage, data])
         } catch (error){
             console.log("error", error)
         }
@@ -30,7 +30,7 @@ const NewAccount=({currUser, setMessage})=>{
         const acctInfo={
             "account":{ name: data.name, amount: data.amount, user_id: data.userid}
         }
-        newf(acctInfo, setMessage)
+        newf(acctInfo, setAccounts)
         e.target.reset()
     }
 

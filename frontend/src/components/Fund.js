@@ -9,8 +9,14 @@ const Fund = ({funds, currUser, data, setFunds, setUpdates}) => {
         <section className="fundtracker">
             <h4 className='title'>Your {name} fund has ${allocated} of the ${target} target amount. </h4>
             <h4>You want to reach the target by {target_date}</h4>
+            <details>
+            <summary>
+                Edit this fund
+            </summary>
+                <UpdateFund currUser={currUser} data={data} setFunds={setFunds} funds={funds} setUpdates={setUpdates}/>
+            </details>
             <DeleteFund currUser={currUser} id={id} setFunds={setFunds} funds={funds} />
-            <UpdateFund currUser={currUser} data={data} setFunds={setFunds} funds={funds} setUpdates={setUpdates}/>
+            
         </section>
     )
 

@@ -11,7 +11,7 @@ const Logout =({setCurrUser})=>{
             const data=await response.json()
             if(!response.ok) throw data.error
             localStorage.removeItem("token")
-            setCurrUser(null)
+            setCurrUser('currUser', {name: null, id: null, email: null})
         } catch (error) {
             console.log("error", error)
         }

@@ -1,4 +1,6 @@
 import { useRef } from "react"
+import Logout from "./Logout"
+import DeleteUser from "./DeleteUser"
 
 const EditUser=({setCurrUser, setShow, currUser})=>{
     const formRef = useRef()
@@ -48,6 +50,9 @@ const EditUser=({setCurrUser, setShow, currUser})=>{
             <input type='submit' value="Submit" />
         </form>
         <br />
+        <Logout setCurrUser={setCurrUser}/>
+        <DeleteUser setCurrUser={setCurrUser} />
+        <a href="http://localhost:4000/">HOME</a>
     </div>
     )
 }

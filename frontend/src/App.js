@@ -1,15 +1,28 @@
 import { useState } from 'react';
 import './App.css';
 import User from './components/User'
-import PrivateText from './components/Funds'
+import NavBar from './NavBar';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import usePersistedState from 'use-persisted-state-hook'
+
 
 const App=()=>{
-  const [currUser, setCurrUser]=useState(null);
-  return (
-    <div className="App">
-      <User currUser={currUser} setCurrUser={setCurrUser} />
-    </div>
-  );
+  const [currUser, setCurrUser]= usePersistedState('currUser', {name: null, id: null, email: null})
+  console.log(currUser)
+  if (currUser.id)
+    return (
+      <div className="App">
+        <h1>Welcome to the Funds app!</h1>
+        <NavBar currUser={currUser} setCurrUser={setCurrUser}/>
+      </div>
+    )
+    return (
+      <div className="App">
+      <h1>Welcome to the Funds app!</h1>
+      <NavBar currUser={currUser} setCurrUser={setCurrUser}/>
+      </div>
+    )
 }
 
 export default App;
