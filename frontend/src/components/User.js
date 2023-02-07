@@ -7,22 +7,29 @@ import Accounts from "./Accounts"
 import DeleteUser from "./DeleteUser";
 import EditUser from "./EditUser";
 
-const User = ({currUser, setCurrUser, totAccts, totFunds}) => {
+const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAccts}) => {
     const [show, setShow]=useState(true)
+    const ratio = 
 
     console.log(currUser)
     if(currUser.id) 
         return (
-            <div>
-            <h1>Hello {currUser.name} at {currUser.email}</h1>
-            <h2>Total in accounts: ${totAccts}</h2>
-            <h2>Total in Funds: ${totFunds}</h2>
-            <ul id='nav-list'>
-                <li><a href="http://localhost:4000/accounts">View Accounts</a></li>
-                <li><a href="http://localhost:4000/funds">View Funds</a></li>
-                <li><a href="http://localhost:4000/user/edituser">Edit Your Profile</a></li>
-            </ul>
-            <Logout setCurrUser={setCurrUser}/>
+            <div className="user">
+                <div className="greet">
+                    <h1>Hello {currUser.name}!</h1>
+                    <h2>$$ Allocated in Funds: ${Math.round(totFunds)}</h2>
+                    <h2>$$ in Accounts: ${Math.round(totAccts)}</h2>
+                </div>
+                <div class="whole-bar w3-light-grey w3-round-large">
+                        <div class="progress w3-container w3-blue w3-round-large" style={{width: (totFunds/totAccts)*100 + '%'}}></div>
+                    </div>
+                <h3> {Math.round((totFunds/totAccts)*100)}% Allocated</h3>
+                <div className='nav-list'>
+                    <a href="http://localhost:4000/accounts">View Accounts</a>
+                    <a href="http://localhost:4000/funds">View Funds</a>
+                    <a href="http://localhost:4000/user/edituser">Edit Your Profile</a>
+                </div>
+                <Logout setCurrUser={setCurrUser}/>
             </div>
         )
     return (

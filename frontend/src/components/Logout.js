@@ -22,7 +22,7 @@ const Logout =({setCurrUser})=>{
     }
     return (
         <div>
-            <input type="button" value='Logout' onClick={handleClick}/>
+            <input type="button" className="button" value='Logout' onClick={handleClick}/>
         </div>
     )
 }

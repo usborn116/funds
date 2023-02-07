@@ -30,7 +30,7 @@ function NavBar({currUser, setCurrUser}) {
         return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<User currUser={currUser} setCurrUser={setCurrUser} totAccts={totAccts} totFunds={totFunds}/>} />
+                <Route path="/" element={<User currUser={currUser} setCurrUser={setCurrUser} totAccts={totAccts} totFunds={totFunds} setTotAccts={setTotAccts} setTotFunds={setTotFunds}/>} />
                 <Route path="/accounts" element={<Accounts currUser={currUser} setCurrUser={setCurrUser} setTotAccts={setTotAccts}/>} />
                 <Route path="/funds" element={<Funds currUser={currUser} setCurrUser={setCurrUser} setTotFunds={setTotFunds}/>} />
                 <Route path="user/edituser" element={<EditUser currUser={currUser} setCurrUser={setCurrUser}/>} />

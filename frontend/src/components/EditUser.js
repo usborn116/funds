@@ -3,6 +3,7 @@ import Logout from "./Logout"
 import DeleteUser from "./DeleteUser"
 
 const EditUser=({setCurrUser, setShow, currUser})=>{
+    let alert= null
     const formRef = useRef()
     const signup=async (userInfo, setCurrUser)=>{
         const url=`http://localhost:3000/signup`
@@ -19,6 +20,7 @@ const EditUser=({setCurrUser, setShow, currUser})=>{
             const data=await response.json()
             if(!response.ok) throw data.error
             setCurrUser(data)
+            window.alert('Changes saved!')
         } catch (error){
             console.log("error", error)
         }
@@ -38,22 +40,29 @@ const EditUser=({setCurrUser, setShow, currUser})=>{
         setShow(true)
     }
     return(
-        <div>
-        <form ref={formRef} onSubmit={handleSubmit}>
-            Full Name: <input type="text" name='name' defaultValue={currUser.name}/>
-            <br/>
-            Email: <input type="email" name='email' defaultValue={currUser.email}/>
-            <br/>
-            New Password: <input type="password" name='password' defaultValue={currUser.password} />
-            <input type="hidden" name='userid' defaultValue={currUser.id} />
-            <br/>
-            <input type='submit' value="Submit" />
-        </form>
-        <br />
-        <Logout setCurrUser={setCurrUser}/>
-        <DeleteUser setCurrUser={setCurrUser} />
-        <a href="http://localhost:4000/">HOME</a>
-    </div>
+        <div className='page'>
+            <form ref={formRef} onSubmit={handleSubmit}>
+                <h3>Edit Name or Email</h3>
+                <div className="input">
+                <input type="text" name='name' defaultValue={currUser.name}/>
+                </div>
+                <br></br>
+                <div className="input">
+                <input type="email" name='email' defaultValue={currUser.email}/>
+                </div>
+                <input type="hidden" name='password' defaultValue={currUser.password} />
+                <input type="hidden" name='userid' defaultValue={currUser.id} />
+                <br/>
+                <input type='submit' className="submit" value="Submit" />
+                <span id="alert">{alert}</span>
+            </form>
+            <div className="edit-user-btns">
+            <DeleteUser setCurrUser={setCurrUser} />
+            <br></br>
+            <a className="homebtn" href="http://localhost:4000/">HOME</a>
+            </div>
+            
+        </div>
     )
 }
 export default EditUser

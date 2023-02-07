@@ -40,15 +40,22 @@ const Login = ({setCurrUser, setShow}) =>{
 
   return(
     <div>
+    <h1>Welcome to Funds!</h1>
+    <div className="form">
       <form ref={formRef} onSubmit={handleSubmit}>
-        Email: <input type="email" name='email' placeholder="email" />
-        <br/>
-        Password: <input type="password" name='password' placeholder="password" />
-        <br/>
-        <input type='submit' value="Login" />
+        <div className="input">
+          <input type="email" name='email' placeholder="email" />
+          <br/>
+        </div>
+        <div className="input">
+          <input type="password" name='password' placeholder="password" />
+          <br/>
+        </div>
+        <input type='submit' className='submit' value="Login" />
+        <br></br>
+        <div className="formtext">Not registered? → <a href="#signup" onClick={handleClick} >Signup</a> </div>
       </form>
-      <br />
-      <div>Not registered yet, <a href="#signup" onClick={handleClick} >Signup</a> </div>
+    </div>
     </div>
   )
 }

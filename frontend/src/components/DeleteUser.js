@@ -27,7 +27,7 @@ const DeleteUser =({setCurrUser})=>{
     }
     return (
         <div>
-            <input type="button" value='Delete User' onClick={handleClick}/>
+            <input type="button" className="button deleteuser" value='Delete User' onClick={handleClick}/>
         </div>
     )
 }
