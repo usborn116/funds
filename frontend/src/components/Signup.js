@@ -37,14 +37,19 @@ const Signup=({setCurrUser, setShow})=>{
     }
     return(
         <div>
+            <h1>Sign Up Form</h1>
         <form ref={formRef} onSubmit={handleSubmit}>
-            Full Name: <input type="text" name='name' placeholder="name" />
-            <br/>
-            Email: <input type="email" name='email' placeholder="email" />
-            <br/>
-            Password: <input type="password" name='password' placeholder="password" />
-            <br/>
-            <input type='submit' value="Submit" />
+            <div className="input">
+            <input type="text" name='name' placeholder="name" />
+            </div>
+            <div className="input">
+            <input type="email" name='email' placeholder="email" />
+            </div>
+            <div className="input">
+            <input type="password" name='password' placeholder="password" />
+            </div>
+            
+            <input className="button" type='submit' value="Submit" />
         </form>
         <br />
         <div>Already registered, <a href="#login" onClick={handleClick} >Login</a> here.</div>

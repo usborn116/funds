@@ -7,10 +7,10 @@ const Account = ({currUser, data, setAccounts, accounts, setUpdates}) => {
 
     return (
         <section className="accttracker">
-            <h4 className='title'>Your {name} account has ${amount} </h4>
+            <h4 className='title'><span className="name">{name}:</span>  <span className="amt">${amount}</span> </h4>
             <details>
-            <summary>
-                Edit this account
+            <summary className="edit">
+                Edit Account
             </summary>
             <UpdateAccount currUser={currUser} id={id} setAccounts={setAccounts} accounts={accounts} setUpdates={setUpdates} data={data} />
             </details>

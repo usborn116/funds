@@ -39,14 +39,18 @@ const NewAccount=({currUser, setAccounts})=>{
     }
 
     return(
-        <div>
+        <div class="new">
         <form ref={formRef} onSubmit={handleSubmit}>
-            Account Name: <input type="text" name='name' placeholder="name" />
+            <div className="input">
+            <input type="text" name='name' placeholder="Name" />
             <br/>
-            Amount in Account: <input type="float" name='amount' placeholder="amount" />
+            </div>
+            <div className="input">
+            <input type="float" name='amount' placeholder="Amount" />
             <br/>
+            </div>
             <input type="hidden" name='userid' value={currUser.id}/>
-            <input type='submit' value="Submit" />
+            <input type='submit' className="button" value="Submit" />
         </form>
     </div>
     )

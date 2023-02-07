@@ -22,7 +22,7 @@ const DeleteAccount =({currUser, id, setAccounts, accounts })=>{
     }
     return (
         <div>
-            <input type="button" value='Delete Account' onClick={handleClick}/>
+            <input type="button" className="button" value='Delete Account' onClick={handleClick}/>
         </div>
     )
 }

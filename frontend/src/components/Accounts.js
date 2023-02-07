@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react"
 import Account from "./Account"
 import NewAccount from "./NewAccount"
+import Graph from "./Graph"
 
 const Accounts=({currUser, setCurrUser, setTotAccts})=>{
     const [accounts, setAccounts]=useState([])
@@ -35,20 +36,26 @@ const Accounts=({currUser, setCurrUser, setTotAccts})=>{
         return(
             /* <div>{message}</div> */
             <div>
-                <h2>ACCOUNTS</h2><br></br>
-                {accounts.map((account) =>
-                    <Account accounts={accounts} data={account} currUser={currUser} key={account.id} setAccounts={setAccounts} setUpdates={setUpdates}/>
-                )}
+                <h2>ACCOUNTS</h2>
+                <a className="homebtn" href="http://localhost:4000/">HOME</a><br></br>
+                ____________________________________
                 <br></br>
-                <br></br>
-                <details>
+                <div className="acct-layout">
+                    <Graph accounts={accounts}/>
+                    <div className="accts">
+                        {accounts.map((account) =>
+                            <Account accounts={accounts} data={account} currUser={currUser} key={account.id} setAccounts={setAccounts} setUpdates={setUpdates}/>
+                        )}
+                        <details className="new">
                 <summary>
-                    Add a New Account
+                    + New Account
                 </summary>
                     <NewAccount currUser={currUser} setCurrUser={setCurrUser} setAccounts={setAccounts}/>
                 </details>
-                <br></br>
-                <a href="http://localhost:4000/">HOME</a>
+                    </div>
+                </div>
+                
+                
             </div>
         )
         return(

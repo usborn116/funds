@@ -53,8 +53,8 @@ const Login = ({setCurrUser, setShow}) =>{
         </div>
         <input type='submit' className='submit' value="Login" />
         <br></br>
-        <div className="formtext">Not registered? → <a href="#signup" onClick={handleClick} >Signup</a> </div>
       </form>
+      <div className="formtext">Not registered? → <a href="#signup" onClick={handleClick} >Signup</a> </div>
     </div>
     </div>
   )

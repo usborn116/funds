@@ -101,13 +101,14 @@ form{
   height: 50px;
   position: relative;
   width: 100%;
-  height: 50px;
-  position: relative;
-  width: 100%;
+  padding: 5px;
+  
 }
 
 .input input{
   margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
   height: 25px;
   border-radius: 12px;
   border: 0;
@@ -132,7 +133,7 @@ form{
   margin-top: 4vh;
   outline: 0;
   text-align: center;
-  width: 50%;
+  width: 60%;
 }
 
 .homebtn{
@@ -143,16 +144,15 @@ form{
   text-align: right;
 }
 
-.submit:hover, .button:hover {
+.submit:hover, .button:hover, .edit:hover{
   background-color: #eff1f2;
   color: #5b8266;
 }
 
 .formtext{
-  background-color: #eff1f2;
-  border-radius: 12px;
   color: 223843;
   padding: 5px;
+  margin-top: 10px;
 }
 
 .greet{
@@ -195,4 +195,86 @@ a{
   justify-content: space-around;
 }
 
+.name, .amt{
+  font-size: 20px;
+  color: green;
+}
 
+.acct-layout{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.accts{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 5vw;
+  align-items: flex-start;
+  height: 100%;
+  gap: 3vw
+}
+
+.chart-title{
+  margin-bottom: 0;
+}
+
+.edit{
+  text-decoration: none;
+}
+
+details > summary {
+  list-style: none;
+  align-self: center;
+  margin-top:0;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.accttracker{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.edit{
+  color: #5b8266;
+  height: 7vh;
+  border-radius: 12px;
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.update form{
+  width: 100%;
+  height: 40vh;
+}
+
+.update form input{
+  margin-bottom: 1px;
+}
+
+.accttracker .button{
+  width: 70%;
+}
+
+.new{
+  color: #5b8266;
+  height: 7vh;
+  border-radius: 12px;
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.new summary{
+  margin-top: 1.33em;
+}
