@@ -1,6 +1,6 @@
 import { useRef } from "react"
 
-const Signup=({setCurrUser, setShow})=>{
+const Signup=({setCurrUser, setShow, setTotFunds, setTotAccts})=>{
     const formRef = useRef()
     const signup=async (userInfo, setCurrUser)=>{
         const url="http://localhost:3000/signup"
@@ -17,6 +17,8 @@ const Signup=({setCurrUser, setShow})=>{
             if(!response.ok) throw data.error
             localStorage.setItem('token', response.headers.get("Authorization"))
             setCurrUser(data)
+            setTotAccts(0)
+            setTotFunds(0)   
         } catch (error){
             console.log("error", error)
         }

@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom"
+
 const DeleteUser =({setCurrUser})=>{
+    const navigate = useNavigate();
     const logout=async (setCurrUser)=>{
         try {
             const response=await fetch("http://localhost:3000/signup",{
@@ -12,7 +15,8 @@ const DeleteUser =({setCurrUser})=>{
             if(!response.ok) throw data.error
             localStorage.removeItem("token")
             console.log(data.message)
-            setCurrUser(null)
+            setCurrUser({name: null, id: null, email: null, totFunds: 0, totAccts: 0})
+            navigate('/login', {replace:true });
         } catch (error) {
             console.log("error", error)
         }

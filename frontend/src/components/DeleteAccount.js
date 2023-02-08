@@ -20,7 +20,9 @@ const DeleteAccount =({currUser, id, setAccounts, accounts })=>{
         e.preventDefault()
         logout(id)
     }
+    if(currUser.id)
     return (
+        
         <div>
             <input type="button" className="button" value='Delete Account' onClick={handleClick}/>
         </div>

@@ -8,7 +8,7 @@ import usePersistedState from 'use-persisted-state-hook'
 
 
 const App=()=>{
-  const [currUser, setCurrUser]= usePersistedState('currUser', {name: null, id: null, email: null})
+  const [currUser, setCurrUser]= usePersistedState('currUser', {name: null, id: null, email: null, totFunds: 0, totAccts: 0})
   if (!currUser.id)
     localStorage.removeItem("token")
   return (

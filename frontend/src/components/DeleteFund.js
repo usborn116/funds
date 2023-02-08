@@ -22,7 +22,7 @@ const DeleteFund =({currUser, id, setFunds, funds })=>{
     }
     return (
         <div>
-            <input type="button" value='Delete Fund' onClick={handleClick}/>
+            <input type="button" class="button" value='Delete Fund' onClick={handleClick}/>
         </div>
     )
 }

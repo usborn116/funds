@@ -9,8 +9,6 @@ import EditUser from "./EditUser";
 
 const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAccts}) => {
     const [show, setShow]=useState(true)
-    const ratio = 
-
     console.log(currUser)
     if(currUser.id) 
         return (
@@ -20,8 +18,8 @@ const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAcc
                     <h2>$$ Allocated in Funds: ${Math.round(totFunds)}</h2>
                     <h2>$$ in Accounts: ${Math.round(totAccts)}</h2>
                 </div>
-                <div class="whole-bar w3-light-grey w3-round-large">
-                        <div class="progress w3-container w3-blue w3-round-large" style={{width: (totFunds/totAccts)*100 + '%'}}></div>
+                <div className="whole-bar w3-light-grey w3-round-large">
+                        <div className="progress w3-container w3-blue w3-round-large" style={{width: (totFunds/totAccts)*100 + '%'}}></div>
                     </div>
                 <h3> {Math.round((totFunds/totAccts)*100)}% Allocated</h3>
                 <div className='nav-list'>
@@ -29,7 +27,7 @@ const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAcc
                     <a href="http://localhost:4000/funds">View Funds</a>
                     <a href="http://localhost:4000/user/edituser">Edit Your Profile</a>
                 </div>
-                <Logout setCurrUser={setCurrUser}/>
+                <Logout setCurrUser={setCurrUser} setTotAccts={setTotAccts} setTotFunds={setTotFunds} />
             </div>
         )
     return (

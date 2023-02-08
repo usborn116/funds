@@ -46,7 +46,7 @@ const Accounts=({currUser, setCurrUser, setTotAccts})=>{
                         {accounts.map((account) =>
                             <Account accounts={accounts} data={account} currUser={currUser} key={account.id} setAccounts={setAccounts} setUpdates={setUpdates}/>
                         )}
-                        <details className="new">
+                <details className="new">
                 <summary>
                     + New Account
                 </summary>

@@ -40,19 +40,27 @@ const UpdateFund=({currUser, setFunds, funds, data, setUpdates})=>{
     }
 
     return(
-        <div>
+        <div className="update">
         <form ref={formRef} onSubmit={handleSubmit}>
-            Fund Name: <input type="text" name='name' defaultValue={name} />
+            <div className="input">
+            <input type="text" name='name' defaultValue={name} />
             <br/>
-            Allocated Amount: <input type="float" name='allocated' defaultValue={allocated} />
+            </div>
+            <div className="input">
+            <input type="float" name='allocated' defaultValue={allocated} />
             <br/>
-            Fund Target Amount: <input type="float" name='target' defaultValue={target} />
+            </div>
+            <div className="input">
+            <input type="float" name='target' defaultValue={target} />
             <br/>
-            Target Date: <input type="date" name='date' defaultValue={target_date} />
+            </div>
+            <div className="input">
+            <input type="date" name='date' defaultValue={target_date} />
             <br/>
+            </div>
             <input type="hidden" name='userid' value={currUser.id}/>
             <input type="hidden" name='fundid' value={id}/>
-            <input type='submit' value="Submit" />
+            <input type='submit' className="button" value="Submit" />
         </form>
     </div>
     )

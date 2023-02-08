@@ -7,10 +7,15 @@ const Fund = ({funds, currUser, data, setFunds, setUpdates}) => {
 
     return (
         <section className="fundtracker">
-            <h4 className='title'>Your {name} fund has ${allocated} of the ${target} target amount. </h4>
-            <h4>You want to reach the target by {target_date}</h4>
+            <h4 className='title'>{name}<br></br>
+            ${allocated} saved<br></br>
+            ${target} target </h4>
+            <h4>Due: {target_date}</h4>
+            <div className="whole-bar w3-light-grey w3-round-large">
+                <div className="progress w3-container w3-blue w3-round-large" style={{width: (allocated/target)*100 + '%'}}>{Math.round(allocated/target*100)}%</div>
+            </div>
             <details>
-            <summary>
+            <summary className="edit">
                 Edit this fund
             </summary>
                 <UpdateFund currUser={currUser} data={data} setFunds={setFunds} funds={funds} setUpdates={setUpdates}/>

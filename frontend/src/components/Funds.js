@@ -2,6 +2,7 @@ import { useState,useEffect } from "react"
 import NewFund from "./NewFund"
 import Fund from "./Fund"
 import Login from "./Login"
+import GraphFund from "./GraphFund"
 
 const Funds=({currUser, setCurrUser, setTotFunds})=>{
     const [funds, setFunds]=useState([])
@@ -32,23 +33,27 @@ const Funds=({currUser, setCurrUser, setTotFunds})=>{
             getText()
     },[currUser, updates])
     
-    if (currUser.id)
+    if (currUser.id || localStorage.getItem('token'))
     return(
-        /* <div>{message}</div> */
         <div>
-            <h2>FUNDS</h2><br></br>
-            {funds.map((fund) =>
-                <Fund funds={funds} data={fund} currUser={currUser} key={fund.id} setFunds={setFunds} setUpdates={setUpdates}/>
-            )}
+            <h2>FUNDS</h2>
+            <a className="homebtn" href="http://localhost:4000/">HOME</a><br></br>
+            ____________________________________
             <br></br>
-            <details>
-            <summary>
-                Create a fund
-            </summary>
-            <NewFund currUser={currUser} setCurrUser={setCurrUser} setFunds={setFunds}/>
-            </details>
-            <br></br>
-            <a href="http://localhost:4000/">HOME</a>
+            <div className="fund-layout">
+                <GraphFund funds={funds} />
+                <div className="funds">
+                    {funds.map((fund) =>
+                        <Fund funds={funds} data={fund} currUser={currUser} key={fund.id} setFunds={setFunds} setUpdates={setUpdates}/>
+                    )}
+                    <details className="new">
+                    <summary>
+                        + Fund
+                    </summary>
+                    <NewFund currUser={currUser} setCurrUser={setCurrUser} setFunds={setFunds}/>
+                    </details>
+                </div>
+            </div>
         </div>
     )
     return (

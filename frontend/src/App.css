@@ -7,6 +7,10 @@
 #596475 (GRAY)
 #8D94BA (COOL GRAY)
 */
+html{
+  display: flex;
+  flex-direction: column;
+}
 .App {
   text-align: center;
 }
@@ -56,6 +60,10 @@ body{
   height: 100vh;
   font-family: 'Poppins', sans-serif;
   background-color: #dbd3d8 ;
+}
+
+.root{
+  width: 100vw;
 }
 
 .nav-list{
@@ -170,8 +178,9 @@ form{
 .whole-bar .progress{
   border-radius: 10px;
   width: 25%;
-  height: 20px;
+  height: 25px;
   background-color: #5b8266;
+  color: white;
 }
 
 a{
@@ -193,6 +202,7 @@ a{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 
 .name, .amt{
@@ -239,6 +249,11 @@ details > summary::-webkit-details-marker {
   justify-content: space-between;
 }
 
+.accttracker .button{
+  width: 100%;
+}
+
+
 .edit{
   color: #5b8266;
   height: 7vh;
@@ -260,10 +275,6 @@ details > summary::-webkit-details-marker {
   margin-bottom: 1px;
 }
 
-.accttracker .button{
-  width: 70%;
-}
-
 .new{
   color: #5b8266;
   height: 7vh;
@@ -277,4 +288,35 @@ details > summary::-webkit-details-marker {
 
 .new summary{
   margin-top: 1.33em;
+}
+
+.fund-layout{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.funds{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 5vw;
+  align-items: flex-start;
+  height: 100%;
+  gap: 3vw
+}
+
+.fundtracker .button{
+  width: 100%;
+  margin-top: 2vh;
+}
+
+.fundtracker form{
+  height: 45vh;
+} 
+
+.deleteuser{
+  align-self: flex-end;
+  width: 30vw;
+  background-color: darkred;
 }

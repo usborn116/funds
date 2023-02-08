@@ -39,18 +39,26 @@ const NewFund=({currUser, setFunds})=>{
     }
 
     return(
-        <div>
+        <div className="new">
         <form ref={formRef} onSubmit={handleSubmit}>
-            Fund Name: <input type="text" name='name' placeholder="name" />
+            <div className="input">
+            <input type="text" name='name' placeholder="fund name" />
             <br/>
-            Allocated Amount: <input type="float" name='allocated' placeholder="allocated amount" />
+            </div>
+            <div className="input">
+            <input type="float" name='allocated' placeholder="allocated amount" />
             <br/>
-            Fund Target Amount: <input type="float" name='target' placeholder="target amount" />
+            </div>
+            <div className="input">
+            <input type="float" name='target' placeholder="target amount" />
             <br/>
-            Target Date: <input type="date" name='date' />
+            </div>
+            <div className="input">
+            <input type="date" name='date' placeholder="due date"/>
             <br/>
+            </div>
             <input type="hidden" name='userid' value={currUser.id}/>
-            <input type='submit' value="Submit" />
+            <input type='submit' className="submit" value="Submit" />
         </form>
     </div>
     )
