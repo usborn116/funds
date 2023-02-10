@@ -14,7 +14,7 @@ const Graph=({accounts})=>{
     
     return (
         <div>
-            <h3 class="chart-title">Total In Accounts: ${vals.reduce((p, a) => p + a, 0)}</h3>
+            <h3 className="chart-title">Total In Accounts: ${vals.reduce((p, a) => p + a, 0)}</h3>
     <Plot
         data={
         [{

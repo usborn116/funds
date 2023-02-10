@@ -12,23 +12,9 @@ import Signup from './components/Signup'
 import { useState, useEffect} from 'react'
 import usePersistedState from 'use-persisted-state-hook'
 
-function NavBar({currUser, setCurrUser}) {
-    const [show, setShow]=useState(true)
-    const [totAccts, setTotAccts]=usePersistedState("totAccts", 0)
-    const [totFunds, setTotFunds]=usePersistedState("totFunds", 0)
+function NavBar({currUser, setCurrUser, totAccts, setTotAccts, totFunds, setTotFunds}) {
 
-
-    if(!currUser.id || !localStorage.getItem('token')) 
-        return (
-            <div>
-                { show?
-                    <Login setCurrUser={setCurrUser} setShow={setShow} setTotAccts={setTotAccts} setTotFunds={setTotFunds}/>            
-                    :
-                    <Signup setCurrUser={setCurrUser}  setShow={setShow} setTotAccts={setTotAccts} setTotFunds={setTotFunds} />
-                }
-            </div>
-        )
-        return (
+    return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<User currUser={currUser} setCurrUser={setCurrUser} totAccts={totAccts} totFunds={totFunds} setTotAccts={setTotAccts} setTotFunds={setTotFunds}/>} />

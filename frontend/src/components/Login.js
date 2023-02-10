@@ -1,5 +1,4 @@
 import { useRef } from "react"
-import { useNavigate } from "react-router-dom"
 
 const Login = ({setCurrUser, setShow, setTotAccts, setTotFunds}) =>{
   const formRef=useRef()
@@ -20,7 +19,7 @@ const Login = ({setCurrUser, setShow, setTotAccts, setTotFunds}) =>{
         localStorage.setItem("token", response.headers.get("Authorization"))
         setCurrUser(data)
         setTotAccts(0)
-        setTotFunds(0)        
+        setTotFunds(0)   
     }catch(error){
        console.log("error", error)
     }

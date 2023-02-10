@@ -2,9 +2,10 @@ import { useRef } from "react"
 import Logout from "./Logout"
 import DeleteUser from "./DeleteUser"
 import Login from "./Login"
+import { useNavigate } from "react-router-dom"
 
 const EditUser=({setCurrUser, setShow, currUser})=>{
-    let alert= null
+    const navigate=useNavigate();
     const formRef = useRef()
     const signup=async (userInfo, setCurrUser)=>{
         const url=`http://localhost:3000/signup`
@@ -40,10 +41,16 @@ const EditUser=({setCurrUser, setShow, currUser})=>{
         e.preventDefault()
         setShow(true)
     }
+
+    const navhome=e=>{
+        e.preventDefault()
+        navigate('/')
+      }
+
     if(currUser.id)
         return(
             <div className='page'>
-                <a className="homebtn" href="http://localhost:4000/">HOME</a>
+                <button className="homebtn" onClick={navhome}>HOME</button><br></br>
                 <form ref={formRef} onSubmit={handleSubmit}>
                     <h3>Edit Name or Email</h3>
                     <div className="input">

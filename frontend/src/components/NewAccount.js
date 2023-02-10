@@ -39,7 +39,7 @@ const NewAccount=({currUser, setAccounts})=>{
     }
 
     return(
-        <div class="new">
+        <div className="new">
         <form ref={formRef} onSubmit={handleSubmit}>
             <div className="input">
             <input type="text" name='name' placeholder="Name" />

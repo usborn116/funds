@@ -16,7 +16,7 @@ const DeleteUser =({setCurrUser})=>{
             localStorage.removeItem("token")
             console.log(data.message)
             setCurrUser({name: null, id: null, email: null, totFunds: 0, totAccts: 0})
-            navigate('/login', {replace:true });
+            navigate('/home', {replace:true });
         } catch (error) {
             console.log("error", error)
         }

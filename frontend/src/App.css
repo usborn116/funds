@@ -68,14 +68,26 @@ body{
 
 .nav-list{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10vw;
   margin: 2vw;  
   color: black;
   font-size: 25px;
+  border: 0px solid white;
 }
 
-.nav-list a{
+.nav-list button, .homebtn{
   color: #5b8266;
+  font-size: 25px;
+  border-radius: 12px;
+  padding: 1vw;
+  border: none;
+  background: none;
+}
+
+.nav-list button:hover, .homebtn:hover{
+  color: white;
+  background-color: #5b8266;
 }
 
 .nav-list li{
@@ -148,7 +160,6 @@ form{
   color: #5b8266;
   cursor: pointer;
   font-size: 25px;
-  margin-bottom: 10vh;
   text-align: right;
 }
 
@@ -319,4 +330,8 @@ details > summary::-webkit-details-marker {
   align-self: flex-end;
   width: 30vw;
   background-color: darkred;
+}
+
+.test{
+  display: none;
 }

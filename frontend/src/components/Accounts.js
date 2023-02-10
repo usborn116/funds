@@ -2,9 +2,11 @@ import { useState,useEffect } from "react"
 import Account from "./Account"
 import NewAccount from "./NewAccount"
 import Graph from "./Graph"
+import { useNavigate } from "react-router-dom"
 
 const Accounts=({currUser, setCurrUser, setTotAccts})=>{
     const [accounts, setAccounts]=useState([])
+    const navigate = useNavigate();
     const [updates, setUpdates]=useState(0)
     const tota = [1]
     accounts.map((account) => tota.push(account.amount))
@@ -32,12 +34,17 @@ const Accounts=({currUser, setCurrUser, setTotAccts})=>{
         if(currUser.id)
             getText()
     },[currUser, updates])
+
+    const navhome=e=>{
+        e.preventDefault()
+        navigate('/')
+      }
     if (currUser.id)
         return(
             /* <div>{message}</div> */
             <div>
                 <h2>ACCOUNTS</h2>
-                <a className="homebtn" href="http://localhost:4000/">HOME</a><br></br>
+                <button className="homebtn" onClick={navhome}>HOME</button><br></br>
                 ____________________________________
                 <br></br>
                 <div className="acct-layout">
