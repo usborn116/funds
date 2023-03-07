@@ -9,8 +9,10 @@ const Funds=({currUser, setCurrUser, setTotFunds})=>{
     const navigate=useNavigate();
     const [funds, setFunds]=useState([])
     const [updates, setUpdates]=useState(0)
-    const totf = funds.map((fund) => fund.allocated)
-    setTotFunds(totf.reduce((sum, n) => sum + n))
+    useEffect(() => {
+        const totalOfAllFunds = funds.reduce((sum, fund) => sum + fund.allocated, 0)
+      }, [funds])
+    setTotFunds(totalOfAllFunds)
     const getText=async ()=>{
         try {
             const response=await fetch("http://localhost:3000/funds", {
