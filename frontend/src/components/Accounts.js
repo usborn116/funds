@@ -8,9 +8,10 @@ const Accounts=({currUser, setCurrUser, setTotAccts})=>{
     const [accounts, setAccounts]=useState([])
     const navigate = useNavigate();
     const [updates, setUpdates]=useState(0)
-    const tota = [1]
-    accounts.map((account) => tota.push(account.amount))
-    setTotAccts(tota.reduce((sum, n) => sum + n))
+    useEffect(() => {
+       const totalOfAllAccounts = accounts.reduce((sum, account) => sum + account.amount, 0)
+     }, [accounts])
+    setTotAccts(totalOfAllAccounts)
     const getText=async ()=>{
         try {
             const response=await fetch("http://localhost:3000/accounts", {
