@@ -9,8 +9,7 @@ const Funds=({currUser, setCurrUser, setTotFunds})=>{
     const navigate=useNavigate();
     const [funds, setFunds]=useState([])
     const [updates, setUpdates]=useState(0)
-    const totf = [0]
-    funds.map((fund) => totf.push(fund.allocated))
+    const totf = funds.map((fund) => fund.allocated)
     setTotFunds(totf.reduce((sum, n) => sum + n))
     const getText=async ()=>{
         try {
