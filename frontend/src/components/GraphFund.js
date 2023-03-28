@@ -21,7 +21,6 @@ const GraphFund=({funds})=>{
             values: vals,
             labels: labels,
             name: 'Total in Funds',
-            hole: 0.3,
             textinfo: 'label+percent',
             textposition: 'outside',
             automargin: true,

@@ -42,15 +42,15 @@ const NewFund=({currUser, setFunds})=>{
         <div className="new">
         <form ref={formRef} onSubmit={handleSubmit}>
             <div className="input">
-            <input type="text" name='name' placeholder="fund name" />
+            <input type="text" name='name' placeholder="fund name" maxlength='20' required/>
             <br/>
             </div>
             <div className="input">
-            <input type="float" name='allocated' placeholder="allocated amount" />
+            <input type="float" name='allocated' placeholder="allocated amount" required />
             <br/>
             </div>
             <div className="input">
-            <input type="float" name='target' placeholder="target amount" />
+            <input type="float" name='target' placeholder="target amount" required />
             <br/>
             </div>
             <div className="input">

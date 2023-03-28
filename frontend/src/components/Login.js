@@ -21,7 +21,7 @@ const Login = ({setCurrUser, setShow, setTotAccts, setTotFunds}) =>{
         setTotAccts(0)
         setTotFunds(0)   
     }catch(error){
-       console.log("error", error)
+      window.alert(error)
     }
 }
   const handleSubmit=e=>{

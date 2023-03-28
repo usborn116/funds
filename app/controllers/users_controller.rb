@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 			@user.save
 			render json: @user
 		else
-			render json: { message: 'could not update'}
+			render json: { status: 422, message: 'Could not update'}
 		end
   end
 
