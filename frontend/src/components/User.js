@@ -2,10 +2,6 @@ import Signup from "./Signup";
 import Login from './Login'
 import Logout from './Logout'
 import { useState } from "react";
-import Funds from "./Funds";
-import Accounts from "./Accounts"
-import DeleteUser from "./DeleteUser";
-import EditUser from "./EditUser";
 import { useNavigate } from "react-router-dom"
 
 const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAccts}) => {
@@ -39,8 +35,6 @@ const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAcc
                     </div>
                 <h3> {Math.round((totFunds/totAccts)*100)}% Allocated</h3>
                 <div className="test">
-                <Accounts currUser={currUser} setCurrUser={setCurrUser} setTotAccts={setTotAccts}/>
-                <Funds currUser={currUser} setCurrUser={setCurrUser} setTotFunds={setTotFunds}/>
                 </div>
                 <div className='nav-list'>
                     <button onClick={navaccts}>Accounts</button>

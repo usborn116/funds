@@ -1,28 +1,9 @@
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
+import { updateData, getData } from "./helpers/api_fetches";
 
 const UpdateFund=({currUser, setFunds, funds, data, setUpdates})=>{
     const {id, name, allocated, target, target_date } = data;
     const formRef = useRef()
-    
-    const newf=async (fundInfo, setFunds)=>{
-        const url=`http://localhost:3000/funds/${id}`
-        try{
-            const response=await fetch(url, {
-                method: 'put',
-                headers: {
-                    "content-type": 'application/json',
-                    "accept": "application/json",
-                    "authorization": localStorage.getItem("token")
-                },
-                body: JSON.stringify(fundInfo)
-            }) 
-            const data=await response.json()
-            if(!response.ok) throw data.error
-            setUpdates(prev => prev + 1)
-        } catch (error){
-            console.log("error", error)
-        }
-    }
 
     const handleSubmit=e=>{
         e.preventDefault()
@@ -31,12 +12,9 @@ const UpdateFund=({currUser, setFunds, funds, data, setUpdates})=>{
         const fundInfo={
             "fund":{ name: data.name, allocated: data.allocated, target: data.target, target_date: data.date, user_id: data.userid}
         }
-        newf(fundInfo, setFunds)
+        updateData('funds', id, fundInfo, setFunds)
+        getData('funds', setFunds)
         e.target.reset()
-    }
-
-    const handleClick=e=>{
-        e.preventDefault()
     }
 
     return(

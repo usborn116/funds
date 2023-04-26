@@ -4,35 +4,17 @@ import Fund from "./Fund"
 import Login from "./Login"
 import GraphFund from "./GraphFund"
 import { useNavigate } from "react-router-dom"
+import { getData } from "./helpers/api_fetches"
 
 const Funds=({currUser, setCurrUser, setTotFunds})=>{
     const navigate=useNavigate();
     const [funds, setFunds]=useState([])
-    const [updates, setUpdates]=useState(0)
     const totf = funds.map((fund) => fund.allocated)
     setTotFunds(totf.reduce((sum, n) => sum + n, 0))
-    const getText=async ()=>{
-        try {
-            const response=await fetch("http://localhost:3000/funds", {
-                method: "get",
-                headers: {
-                    "content-type": "application/json",
-                    "authorization": localStorage.getItem("token")
-                }
-            })
-            if(!response.ok) throw Error
-            const data=await response.json()
-            setFunds(data)
-        }
-        catch(error){
-            console.log("error", error)
-            setFunds(null)
-        }
-    }
     useEffect(()=>{
         if(currUser)
-            getText()
-    },[currUser, updates])
+            getData('funds', setFunds)
+    },[currUser])
 
     const navhome=e=>{
         e.preventDefault()
@@ -49,7 +31,7 @@ const Funds=({currUser, setCurrUser, setTotFunds})=>{
                 <GraphFund funds={funds} />
                 <div className="funds">
                     {funds.map((fund) =>
-                        <Fund funds={funds} data={fund} currUser={currUser} key={fund.id} setFunds={setFunds} setUpdates={setUpdates}/>
+                        <Fund funds={funds} data={fund} currUser={currUser} key={fund.id} setFunds={setFunds}s/>
                     )}
                     <details className="new">
                     <summary>
@@ -69,7 +51,3 @@ const Funds=({currUser, setCurrUser, setTotFunds})=>{
     )
 }
 export default Funds
-
-
-
-

@@ -15,7 +15,6 @@ import usePersistedState from 'use-persisted-state-hook'
 function NavBar({currUser, setCurrUser, totAccts, setTotAccts, totFunds, setTotFunds}) {
 
     return (
-        <BrowserRouter>
             <Routes>
                 <Route path="/" element={<User currUser={currUser} setCurrUser={setCurrUser} totAccts={totAccts} totFunds={totFunds} setTotAccts={setTotAccts} setTotFunds={setTotFunds}/>} />
                 <Route path="/accounts" element={<Accounts currUser={currUser} setCurrUser={setCurrUser} setTotAccts={setTotAccts}/>} />
@@ -23,10 +22,7 @@ function NavBar({currUser, setCurrUser, totAccts, setTotAccts, totFunds, setTotF
                 <Route path="user/edituser" element={<EditUser currUser={currUser} setCurrUser={setCurrUser}/>} />
                 <Route path="/login" element={<Login currUser={currUser} setCurrUser={setCurrUser}/>} />
                 <Route path="/signup" element={<Signup currUser={currUser} setCurrUser={setCurrUser}/>} />
-
             </Routes>
-        
-        </BrowserRouter>
     )
 }
 

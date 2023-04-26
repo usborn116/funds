@@ -11,8 +11,7 @@ const App=()=>{
   const [totAccts, setTotAccts]=usePersistedState("totAccts", 0)
   const [totFunds, setTotFunds]=usePersistedState("totFunds", 0)
   const [currUser, setCurrUser]= usePersistedState('currUser', {name: null, id: null, email: null, totFunds: 0, totAccts: 0})
-  
-  console.log(currUser.id)
+
   if(!currUser.id || !localStorage.getItem('token')) 
     return (
         <div>

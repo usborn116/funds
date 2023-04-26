@@ -1,8 +1,7 @@
 import DeleteAccount from "./DeleteAccount";
 import UpdateAccount from "./UpdateAccount";
-import {useState} from 'react'
 
-const Account = ({currUser, data, setAccounts, accounts, setUpdates}) => {
+const Account = ({currUser, data, setAccounts, accounts}) => {
     const {id, name, amount } = data;
 
     return (
@@ -12,13 +11,11 @@ const Account = ({currUser, data, setAccounts, accounts, setUpdates}) => {
             <summary className="edit">
                 Edit Account
             </summary>
-            <UpdateAccount currUser={currUser} id={id} setAccounts={setAccounts} accounts={accounts} setUpdates={setUpdates} data={data} />
+            <UpdateAccount currUser={currUser} id={id} setAccounts={setAccounts} accounts={accounts} data={data} />
             </details>
             <DeleteAccount currUser={currUser} id={id} setAccounts={setAccounts} accounts={accounts} />
         </section>
     )
 
-
 }
-
 export default Account;

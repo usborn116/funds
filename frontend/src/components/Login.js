@@ -1,29 +1,8 @@
 import { useRef } from "react"
+import { login } from "./helpers/api_fetches"
 
 const Login = ({setCurrUser, setShow, setTotAccts, setTotFunds}) =>{
   const formRef=useRef()
-  const login=async (userInfo, setCurrUser)=>{
-    const url="http://localhost:3000/login"
-    try{
-        const response=await fetch(url, {
-            method: "post",
-            headers: {
-                'content-type': 'application/json',
-                'accept': 'application/json'
-            },
-            body: JSON.stringify(userInfo)
-        })
-        const data=await response.json()
-        if(!response.ok) 
-          throw data.error
-        localStorage.setItem("token", response.headers.get("Authorization"))
-        setCurrUser(data)
-        setTotAccts(0)
-        setTotFunds(0)   
-    }catch(error){
-      window.alert(error)
-    }
-}
   const handleSubmit=e=>{
     e.preventDefault()
       const formData=new FormData(formRef.current)
@@ -31,7 +10,10 @@ const Login = ({setCurrUser, setShow, setTotAccts, setTotFunds}) =>{
       const userInfo={
         "user":{ email: data.email, password: data.password }
       }
-      login(userInfo, setCurrUser)
+      login(userInfo, setCurrUser).then(() => {
+        setTotAccts(0);
+        setTotFunds(0);
+      });
       e.target.reset()
   }
   const handleClick=e=>{

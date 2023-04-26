@@ -3,38 +3,18 @@ import Account from "./Account"
 import NewAccount from "./NewAccount"
 import Graph from "./Graph"
 import { useNavigate } from "react-router-dom"
+import { getData } from './helpers/api_fetches'
 
 const Accounts=({currUser, setCurrUser, setTotAccts})=>{
     const [accounts, setAccounts]=useState([])
     const navigate = useNavigate();
-    const [updates, setUpdates]=useState(0)
-    const totalOfAllAccounts = accounts.reduce((sum, account) => sum + account.amount, 0)
     useEffect(() => { accounts.reduce((sum, account) => sum + account.amount, 0)
       }, [accounts])
     setTotAccts(accounts.reduce((sum, account) => sum + account.amount, 0))
-    const getText=async ()=>{
-        try {
-            const response=await fetch("http://localhost:3000/accounts", {
-                method: "get",
-                headers: {
-                    "content-type": "application/json",
-                    "authorization": localStorage.getItem("token")
-                }
-            })
-            if(!response.ok) throw Error
-            const data=await response.json()
-            setAccounts(data)
-            console.log(data)
-        }
-        catch(error){
-            console.log("error", error)
-            setAccounts(null)
-        }
-    }
     useEffect(()=>{
         if(currUser.id)
-            getText()
-    },[currUser, updates])
+            getData("accounts", setAccounts)
+    },[currUser])
 
     const navhome=e=>{
         e.preventDefault()
@@ -42,7 +22,6 @@ const Accounts=({currUser, setCurrUser, setTotAccts})=>{
       }
     if (currUser.id)
         return(
-            /* <div>{message}</div> */
             <div>
                 <h2>ACCOUNTS</h2>
                 <button className="homebtn" onClick={navhome}>HOME</button><br></br>
@@ -52,7 +31,7 @@ const Accounts=({currUser, setCurrUser, setTotAccts})=>{
                     <Graph accounts={accounts}/>
                     <div className="accts">
                         {accounts.map((account) =>
-                            <Account accounts={accounts} data={account} currUser={currUser} key={account.id} setAccounts={setAccounts} setUpdates={setUpdates}/>
+                            <Account accounts={accounts} data={account} currUser={currUser} key={account.id}/>
                         )}
                 <details className="new">
                 <summary>
