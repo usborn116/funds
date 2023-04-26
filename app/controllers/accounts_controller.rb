@@ -1,9 +1,15 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: %i[ show edit update destroy ]
+  protect_from_forgery with: :null_session
+  before_action :authenticate_user!
+  
+
 
   # GET /accounts or /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = Account.where(user_id: current_user.id).order('name DESC')
+    render json: @accounts
+
   end
 
   # GET /accounts/1 or /accounts/1.json
@@ -23,27 +29,19 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
 
-    respond_to do |format|
-      if @account.save
-        format.html { redirect_to account_url(@account), notice: "Account was successfully created." }
-        format.json { render :show, status: :created, location: @account }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
-      end
+    if @account.save
+      render json: @account, status: :created, location: account_path(@account)
+    else
+      render json: @account.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /accounts/1 or /accounts/1.json
   def update
-    respond_to do |format|
-      if @account.update(account_params)
-        format.html { redirect_to account_url(@account), notice: "Account was successfully updated." }
-        format.json { render :show, status: :ok, location: @account }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
-      end
+    if @account.update(account_params)
+      render json: @account, location: account_path(@account)
+    else
+      render json: @account.errors, status: :unprocessable_entity
     end
   end
 
@@ -51,10 +49,7 @@ class AccountsController < ApplicationController
   def destroy
     @account.destroy
 
-    respond_to do |format|
-      format.html { redirect_to accounts_url, notice: "Account was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    render json: { message: 'account was deleted'}
   end
 
   private

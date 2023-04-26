@@ -1,0 +1,1 @@
+This is the frontend directory for the funds app, created using React!

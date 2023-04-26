@@ -11,6 +11,10 @@ gem "rails", "~> 7.0.4"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+gem 'rack-cors'
+gem 'devise-jwt'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'rspec-rails', ">= 3.9.0", groups: [:development, :test]
 # Use sqlite3 as the database for Active Record
 gem "pg"
 
