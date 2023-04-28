@@ -5,7 +5,7 @@ class FundsController < ApplicationController
 
   # GET /funds or /funds.json
   def index
-    @funds = Fund.where(user_id: current_user.id).order('name DESC')
+    @funds = Fund.where(user_id: current_user.id).order('created_at')
     render json: @funds
   end
 

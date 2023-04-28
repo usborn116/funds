@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
 
   # GET /accounts or /accounts.json
   def index
-    @accounts = Account.where(user_id: current_user.id).order('name DESC')
+    @accounts = Account.where(user_id: current_user.id).order('created_at')
     render json: @accounts
 
   end

@@ -13,7 +13,8 @@ const UpdateFund=({currUser, setFunds, funds, data, setUpdates})=>{
             "fund":{ name: data.name, allocated: data.allocated, target: data.target, target_date: data.date, user_id: data.userid}
         }
         updateData('funds', id, fundInfo, setFunds)
-        getData('funds', setFunds)
+        const popup = document.querySelector('.popup')
+        popup.removeAttribute('open')
         e.target.reset()
     }
 
