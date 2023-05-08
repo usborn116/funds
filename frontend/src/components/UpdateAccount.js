@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { updateData, getData } from "./helpers/api_fetches";
+import { updateData } from "./helpers/api_fetches";
 
 const UpdateAccount=({currUser, setAccounts, accounts, data })=>{
     const {id, name, amount } = data;
@@ -13,7 +13,8 @@ const UpdateAccount=({currUser, setAccounts, accounts, data })=>{
             "account":{ name: data.name, amount: data.amount, user_id: data.userid}
         }
         updateData('accounts', id, accountInfo, setAccounts)
-        getData('accounts', setAccounts)
+        const popup = document.querySelector('.popup')
+        popup.removeAttribute('open')
         e.target.reset()
     }
 

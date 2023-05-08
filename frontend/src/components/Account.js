@@ -7,7 +7,7 @@ const Account = ({currUser, data, setAccounts, accounts}) => {
     return (
         <section className="accttracker">
             <h4 className='title'><span className="name">{name}:</span>  <span className="amt">${amount}</span> </h4>
-            <details>
+            <details className='popup'>
             <summary className="edit">
                 Edit Account
             </summary>

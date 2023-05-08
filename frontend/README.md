@@ -1,1 +1,1 @@
-This is the frontend directory for the funds app, created using React!
+This is the frontend directory for the funds app, created using React! It pulls data from the Rails API backend via fetch requests.

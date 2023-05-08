@@ -6,43 +6,43 @@ import GraphFund from "./GraphFund"
 import { useNavigate } from "react-router-dom"
 import { getData } from "./helpers/api_fetches"
 
-const Funds=({currUser, setCurrUser, setTotFunds})=>{
-    const navigate=useNavigate();
+const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{    
     const [funds, setFunds]=useState([])
-    const totf = funds.map((fund) => fund.allocated)
-    setTotFunds(totf.reduce((sum, n) => sum + n, 0))
+    const navigate=useNavigate();
+    setTotFunds(funds.reduce((sum, fund) => sum + fund.allocated, 0))
     useEffect(()=>{
         if(currUser)
-            getData('funds', setFunds)
+            getData('funds', setFunds, setError)
+            console.log(funds)
     },[currUser])
 
     const navhome=e=>{
         e.preventDefault()
         navigate('/')
       }
-    
-    if (currUser.id || localStorage.getItem('token'))
-    return(
-        <div>
-            <h2>FUNDS</h2>
-            <button className="homebtn" onClick={navhome}>HOME</button><br></br>
-            ____________________________________
-            <div className="fund-layout">
-                <GraphFund funds={funds} />
-                <div className="funds">
-                    {funds.map((fund) =>
-                        <Fund funds={funds} data={fund} currUser={currUser} key={fund.id} setFunds={setFunds}s/>
-                    )}
-                    <details className="new">
-                    <summary>
-                        + Fund
-                    </summary>
-                    <NewFund currUser={currUser} setCurrUser={setCurrUser} setFunds={setFunds}/>
-                    </details>
+    if (currUser.id){
+        return(
+            <div>
+                <h2>FUNDS</h2>
+                <button className="homebtn" onClick={navhome}>HOME</button><br></br>
+                ____________________________________
+                <div className="fund-layout">
+                    <GraphFund funds={funds} />
+                    <div className="funds">
+                        {funds.map((fund) =>
+                            <Fund funds={funds} data={fund} currUser={currUser} key={fund.id} setFunds={setFunds}/>
+                        )}
+                        <details className="new">
+                        <summary>
+                            + Fund
+                        </summary>
+                        <NewFund currUser={currUser} setCurrUser={setCurrUser} setFunds={setFunds}/>
+                        </details>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+     }
     return (
     <div>
             <h3>You need to log in</h3>

@@ -5,9 +5,7 @@ const DeleteAccount =({currUser, id, setAccounts, accounts })=>{
         e.preventDefault()
         deleteData("accounts", id, setAccounts, accounts)
     }
-    if(currUser.id)
-    return (
-        
+    return (  
         <div>
             <input type="button" className="button" value='Delete Account' onClick={handleClick}/>
         </div>
