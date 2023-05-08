@@ -1,28 +1,23 @@
 import React from 'react'
-import {BrowserRouter, Routes, Route } from 'react-router-dom'
+import {NavLink, Outlet, Routes, Route } from 'react-router-dom'
 
 import Accounts from './components/Accounts'
 import Funds from './components/Funds'
 import EditUser from './components/EditUser'
-import NewFund from './components/NewFund'
-import NewAccount from './components/NewAccount'
-import User from './components/User'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import { useState, useEffect} from 'react'
-import usePersistedState from 'use-persisted-state-hook'
 
-function NavBar({currUser, setCurrUser, totAccts, setTotAccts, totFunds, setTotFunds, setError}) {
+function NavBar() {
 
     return (
-            <Routes>
-                <Route path="/" element={<User currUser={currUser} setCurrUser={setCurrUser} totAccts={totAccts} totFunds={totFunds} setTotAccts={setTotAccts} setTotFunds={setTotFunds}/>} />
-                <Route path="/accounts" element={<Accounts currUser={currUser} setCurrUser={setCurrUser} setTotAccts={setTotAccts}/>} />
-                <Route path="/funds" element={<Funds currUser={currUser} setCurrUser={setCurrUser} setTotFunds={setTotFunds} setError={setError}/>} />
-                <Route path="user/edituser" element={<EditUser currUser={currUser} setCurrUser={setCurrUser}/>} />
-                <Route path="/login" element={<Login currUser={currUser} setCurrUser={setCurrUser}/>} />
-                <Route path="/signup" element={<Signup currUser={currUser} setCurrUser={setCurrUser}/>} />
-            </Routes>
+        <div>
+            <div className='nav-list'>
+                <NavLink to="/accounts">Accounts</NavLink>
+                <NavLink to="/funds">Funds</NavLink>
+                <NavLink to="user/edituser">Edit User</NavLink>
+            </div>
+            <div>
+                <Outlet />
+            </div>
+        </div>
     )
 }
 

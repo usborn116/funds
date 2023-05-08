@@ -3,13 +3,13 @@ import Login from './Login'
 import Logout from './Logout'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
+import NavBar from "../NavBar";
 
 const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAccts}) => {
-    const navigate=useNavigate();
     const [show, setShow]=useState(true)
     console.log(currUser)
 
-    const navfunds=e=>{
+    /*const navfunds=e=>{
         e.preventDefault()
         navigate('/funds')
       }
@@ -22,8 +22,8 @@ const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAcc
         e.preventDefault()
         navigate('/user/edituser')
       }
-    if(currUser.id) 
-        return (
+      */
+    return (
             <div className="user">
                 <div className="greet">
                     <h1>Hello {currUser.name}!</h1>
@@ -37,21 +37,10 @@ const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAcc
                 <div className="test">
                 </div>
                 <div className='nav-list'>
-                    <button onClick={navaccts}>Accounts</button>
-                    <button onClick={navfunds}>Funds</button>
-                    <button onClick={navedit}>Profile</button>
+                    <NavBar />
                 </div>
                 <Logout setCurrUser={setCurrUser} setTotAccts={setTotAccts} setTotFunds={setTotFunds} />
             </div>
         )
-    return (
-        <div>
-            { show?
-                <Login setCurrUser={setCurrUser} setShow={setShow}/>            
-                :
-                <Signup setCurrUser={setCurrUser}  setShow={setShow} />
-            }
-        </div>
-    )
 }
 export default User
