@@ -6,20 +6,21 @@ import GraphFund from "./GraphFund"
 import { useNavigate } from "react-router-dom"
 import { getData } from "./helpers/api_fetches"
 
-const Funds=({currUser, setCurrUser, setTotFunds})=>{    
+const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{    
     const [funds, setFunds]=useState([])
     const navigate=useNavigate();
     setTotFunds(funds.reduce((sum, fund) => sum + fund.allocated, 0))
     useEffect(()=>{
         if(currUser)
-            getData('funds', setFunds)
+            getData('funds', setFunds, setError)
+            console.log(funds)
     },[currUser])
 
     const navhome=e=>{
         e.preventDefault()
         navigate('/')
       }
-    if (currUser.id)
+    if (currUser.id){
         return(
             <div>
                 <h2>FUNDS</h2>
@@ -41,11 +42,12 @@ const Funds=({currUser, setCurrUser, setTotFunds})=>{
                 </div>
             </div>
         )
-        return (
-        <div>
-                <h3>You need to log in</h3>
-                <Login />
-                </div>
-        )
+     }
+    return (
+    <div>
+            <h3>You need to log in</h3>
+            <Login />
+            </div>
+    )
 }
 export default Funds

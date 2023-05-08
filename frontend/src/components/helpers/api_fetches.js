@@ -1,4 +1,4 @@
-export const getData= async (endpoint, setter)=>{
+export const getData= async (endpoint, setter, errsetter)=>{
     try {
         const response=await fetch(`http://localhost:3000/${endpoint}`, {
             method: "get",
@@ -12,8 +12,8 @@ export const getData= async (endpoint, setter)=>{
         setter(() => data)
     }
     catch(error){
-        console.log("error", error)
-        setter(null)
+        errsetter(error)
+        setter([])
     }
 }
 
