@@ -19,9 +19,10 @@ const Accounts=({currUser, setCurrUser, setTotAccts})=>{
         e.preventDefault()
         navigate('/')
       }
-    if (currUser.id)
+    if (currUser.id){
+        console.log(accounts)
         return(
-            <div>
+            <div className="info">
                 <h2>ACCOUNTS</h2>
                 <button className="homebtn" onClick={navhome}>HOME</button><br></br>
                 ____________________________________
@@ -41,6 +42,7 @@ const Accounts=({currUser, setCurrUser, setTotAccts})=>{
                 </div>         
             </div>
         )
+    }
         return (
         <div>
                 <h3>You need to log in</h3>

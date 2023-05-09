@@ -13,7 +13,6 @@ const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{
     useEffect(()=>{
         if(currUser)
             getData('funds', setFunds, setError)
-            console.log(funds)
     },[currUser])
 
     const navhome=e=>{
@@ -22,7 +21,7 @@ const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{
       }
     if (currUser.id){
         return(
-            <div>
+            <div className="info">
                 <h2>FUNDS</h2>
                 <button className="homebtn" onClick={navhome}>HOME</button><br></br>
                 ____________________________________
@@ -32,12 +31,12 @@ const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{
                         {funds.map((fund) =>
                             <Fund funds={funds} data={fund} currUser={currUser} key={fund.id} setFunds={setFunds}/>
                         )}
-                        <details className="new">
+                    <details className="new">
                         <summary>
                             + Fund
                         </summary>
                         <NewFund currUser={currUser} setCurrUser={setCurrUser} setFunds={setFunds}/>
-                        </details>
+                    </details>
                     </div>
                 </div>
             </div>

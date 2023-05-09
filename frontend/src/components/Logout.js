@@ -1,12 +1,12 @@
 import { logout } from "./helpers/api_fetches"
 
-const Logout =({setCurrUser, setTotAccts, setTotFunds})=>{
+const Logout =({setCurrUser})=>{
     const handleClick=e=>{
         e.preventDefault()
          logout(setCurrUser)
     }
     return (
-        <div>
+        <div className='logout'>
             <input type="button" className="button" value='Logout' onClick={handleClick}/>
         </div>
     )
