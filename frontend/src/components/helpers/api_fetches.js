@@ -96,7 +96,7 @@ export const login = async (user, setter)=>{
     }
 }
 
-export const logout = async (setCurrUser)=>{
+export const logout = async (setCurrUser, setters)=>{
     try {
         const response=await fetch("http://localhost:3000/logout",{
             method: "delete",
@@ -108,6 +108,7 @@ export const logout = async (setCurrUser)=>{
         const data=await response.json()
         if(!response.ok) throw data.error
         localStorage.removeItem("token")
+        setters.forEach(setter => setter(0))
         setCurrUser('currUser', {name: null, id: null, email: null})  
     } catch (error) {
         console.log("error", error)

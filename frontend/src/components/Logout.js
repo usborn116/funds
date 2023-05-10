@@ -1,9 +1,9 @@
 import { logout } from "./helpers/api_fetches"
 
-const Logout =({setCurrUser})=>{
+const Logout =({setCurrUser, setTotFunds, setTotAccts})=>{
     const handleClick=e=>{
         e.preventDefault()
-         logout(setCurrUser)
+        logout(setCurrUser, [setTotFunds, setTotAccts])
     }
     return (
         <div className='logout'>
