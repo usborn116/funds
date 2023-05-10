@@ -31,7 +31,7 @@ const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{
                         {funds.map((fund) =>
                             <Fund funds={funds} data={fund} currUser={currUser} key={fund.id} setFunds={setFunds}/>
                         )}
-                    <details className="new">
+                    <details className="new popup">
                         <summary>
                             + Fund
                         </summary>

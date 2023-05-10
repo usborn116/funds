@@ -2,7 +2,6 @@ import DeleteAccount from "./DeleteAccount";
 import UpdateAccount from "./UpdateAccount";
 
 const Account = ({currUser, data, setAccounts, accounts}) => {
-    console.log(data)
     return (
         <section className="accttracker">
             <h4 className='title'><span className="name">{data.name}:</span>  <span className="amt">${data.amount}</span> </h4>
@@ -12,7 +11,7 @@ const Account = ({currUser, data, setAccounts, accounts}) => {
             </summary>
             <UpdateAccount currUser={currUser} setAccounts={setAccounts} accounts={accounts} data={data} />
             </details>
-            <DeleteAccount currUser={currUser} setAccounts={setAccounts} accounts={accounts} />
+            <DeleteAccount currUser={currUser} setAccounts={setAccounts} accounts={accounts} data={data} />
         </section>
     )
 

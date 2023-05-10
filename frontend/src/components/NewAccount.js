@@ -12,8 +12,8 @@ const NewAccount=({currUser, setAccounts})=>{
             "account":{ name: data.name, amount: data.amount, user_id: data.userid}
         }
         newData('accounts', acctInfo, setAccounts)
-        const popup = document.querySelector('.popup')
-        popup.removeAttribute('open')
+        const popup = document.querySelectorAll('.popup')
+        popup.forEach(p => p.removeAttribute('open'))
         e.target.reset()
     }
     

@@ -6,6 +6,8 @@ const NewFund=({currUser, setFunds})=>{
 
     const handleSubmit=e=>{
         e.preventDefault()
+        const popup = document.querySelectorAll('.popup')
+        popup.forEach(p => p.removeAttribute('open'))
         const formData=new FormData(formRef.current)
         const data=Object.fromEntries(formData)
         const fundInfo={
