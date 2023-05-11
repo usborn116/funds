@@ -13,11 +13,11 @@ const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{
     useEffect(()=>{
         if(currUser)
             getData('funds', setFunds, setError)
-    },[currUser])
+    },[])
 
     const navhome=e=>{
         e.preventDefault()
-        navigate('/')
+        navigate('/home')
       }
     if (currUser.id){
         return(

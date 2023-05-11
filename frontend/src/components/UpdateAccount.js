@@ -19,7 +19,7 @@ const UpdateAccount=({currUser, setAccounts, accounts, data })=>{
     }
 
     return(
-        <div class='update'>
+        <div className='update'>
         <form ref={formRef} onSubmit={handleSubmit}>
             <h3>Edit Name/Amount</h3>
             <div className="input">

@@ -17,7 +17,7 @@ const Accounts=({currUser, setCurrUser, setTotAccts})=>{
 
     const navhome=e=>{
         e.preventDefault()
-        navigate('/')
+        navigate('/home')
       }
     if (currUser.id){
         console.log(accounts)

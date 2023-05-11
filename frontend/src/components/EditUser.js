@@ -37,14 +37,10 @@ const EditUser=({setCurrUser, setShow, currUser})=>{
         signup(userInfo, setCurrUser)
         e.target.reset()
     }
-    const handleClick=e=>{
-        e.preventDefault()
-        setShow(true)
-    }
 
     const navhome=e=>{
         e.preventDefault()
-        navigate('/')
+        navigate('/home')
       }
 
     if(currUser.id)

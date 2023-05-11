@@ -7,7 +7,6 @@ export const getData= async (endpoint, setter, errsetter)=>{
                 "authorization": localStorage.getItem("token")
             }
         })
-        if(!response.ok) throw Error
         const data=await response.json()
         setter(() => data)
     }
