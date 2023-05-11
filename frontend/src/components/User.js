@@ -5,45 +5,19 @@ import NavBar from "../NavBar";
 import Loading from './Loading';
 
 const User = ({currUser, setCurrUser, totFunds, setTotFunds, totAccts, setTotAccts, setError}) => {
-    const [funds, setFunds]=useState([])
-    const [accounts, setAccounts]=useState([])
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false)
-            },500
+            },250
         )
     }, [])
 
-    /*useEffect(() => {
-        (async () => {
-        await getData("funds", setFunds)
-        setTotFunds(funds.reduce((sum, fund) => sum + fund.allocated, 0))
-        })();
-    },[])
-
-    useEffect(() => {
-        (async () => {
-        await getData("accounts", setAccounts)
-        setTotAccts(accounts.reduce((sum, account) => sum + account.amount, 0))
-        })();
-    },[]) */
-
-    useEffect(()=>{
-        getData("funds", setFunds)
-        console.log(funds)
-        console.log(totFunds)
-    },[])
-    
-    useEffect(()=>{
-        getData("accounts", setAccounts)
-    },[])
-
     return (
         <div className="user">
-        {loading ?
+        { loading ?
         <Loading />
         :
         <div className="main">

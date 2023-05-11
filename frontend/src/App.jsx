@@ -8,6 +8,7 @@ import Funds from './components/Funds';
 import Accounts from './components/Accounts';
 import User from './components/User';
 import {Route, Routes} from 'react-router-dom'
+import NotFound from './components/NotFound';
 
 
 const App=()=>{
@@ -18,12 +19,12 @@ const App=()=>{
   const [currUser, setCurrUser]= usePersistedState('currUser', {name: null, id: null, email: null, totFunds: 0, totAccts: 0})
   console.log(totFunds)
 
-  if(!currUser.id && !error) {
+  if(!currUser.id || error) {
     return (
         <div>
           
             { show?
-                <Login setCurrUser={setCurrUser} setShow={setShow}/>            
+                <Login setCurrUser={setCurrUser} setShow={setShow} setError={setError} setTotAccts={setTotAccts} setTotFunds={setTotFunds}/>            
                 :
                 <Signup setCurrUser={setCurrUser}  setShow={setShow}/>
             }
@@ -37,6 +38,7 @@ const App=()=>{
           <Route path="/accounts" element={<Accounts currUser={currUser} setCurrUser={setCurrUser} totAccts={totAccts} setTotAccts={setTotAccts} setError={setError}/>} />
           <Route path="/funds" element={<Funds currUser={currUser} setCurrUser={setCurrUser} totFunds={totFunds} setTotFunds={setTotFunds} setError={setError}/>} />
           <Route path="/user/edituser" element={<EditUser currUser={currUser} setCurrUser={setCurrUser} setError={setError}/>} />
+          <Route path="*" element={<NotFound />} />
         </Routes> 
       </div>
   )

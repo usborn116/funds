@@ -1,7 +1,8 @@
 import { useRef } from "react"
 import { login } from "./helpers/api_fetches"
+import { getData } from "./helpers/api_fetches"
 
-const Login = ({setCurrUser, setShow}) =>{
+const Login = ({setCurrUser, setShow, setError, setTotFunds, setTotAccts}) =>{
   const formRef=useRef()
   const handleSubmit=e=>{
     e.preventDefault()
@@ -11,6 +12,11 @@ const Login = ({setCurrUser, setShow}) =>{
         "user":{ email: data.email, password: data.password }
       }
       login(userInfo, setCurrUser)
+      .then(() => setError(null))
+      .then(() => getData("funds"))
+      .then((data) => setTotFunds(data.reduce((sum, fund) => sum + fund.allocated, 0)))
+      .then(() => getData("accounts"))
+      .then((data) => setTotAccts(data.reduce((sum, account) => sum + account.amount, 0)))
       e.target.reset()
   }
   const handleClick=e=>{

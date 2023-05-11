@@ -8,7 +8,7 @@ export const getData= async (endpoint, setter, errsetter)=>{
             }
         })
         const data=await response.json()
-        setter(() => data)
+        return setter ? setter(() => data) : data
     }
     catch(error){
         errsetter(error)
