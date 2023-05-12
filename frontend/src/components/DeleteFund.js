@@ -1,6 +1,6 @@
-import { deleteData } from "./helpers/api_fetches"
+import { deleteData } from "./helpers/helper_functions"
 
-const DeleteFund =({currUser, id, setFunds, funds })=>{
+const DeleteFund =({id, setFunds, funds })=>{
     const handleClick=e=>{
         e.preventDefault()
         deleteData("funds", id, setFunds, funds)

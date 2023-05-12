@@ -1,31 +1,21 @@
-import Signup from "./Signup";
-import Login from './Login'
 import Logout from './Logout'
-import { useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useEffect } from "react";
+import { load } from "./helpers/helper_functions";
+import NavBar from "../NavBar";
+import Loading from './Loading';
 
-const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAccts}) => {
-    const navigate=useNavigate();
-    const [show, setShow]=useState(true)
-    console.log(currUser)
+const User = ({currUser, setCurrUser, totFunds, setTotFunds, totAccts, setTotAccts, setLoading, loading}) => {
 
-    const navfunds=e=>{
-        e.preventDefault()
-        navigate('/funds')
-      }
-    const navaccts=e=>{
-        e.preventDefault()
-        navigate('/accounts')
-      }
+    useEffect(() => {
+        load(setLoading)
+    }, [setLoading])
 
-      const navedit=e=>{
-        e.preventDefault()
-        navigate('/user/edituser')
-      }
-    if(currUser.id) 
-        return (
-            <div className="user">
-                <div className="greet">
+    return (
+        <div className="user">
+        { loading ? 
+        <Loading /> :
+        <div className="main">
+            <div className="greet">
                     <h1>Hello {currUser.name}!</h1>
                     <h2>$$ Allocated in Funds: ${Math.round(totFunds)}</h2>
                     <h2>$$ in Accounts: ${Math.round(totAccts)}</h2>
@@ -37,21 +27,12 @@ const User = ({currUser, setCurrUser, totAccts, totFunds, setTotFunds, setTotAcc
                 <div className="test">
                 </div>
                 <div className='nav-list'>
-                    <button onClick={navaccts}>Accounts</button>
-                    <button onClick={navfunds}>Funds</button>
-                    <button onClick={navedit}>Profile</button>
+                    <NavBar />
                 </div>
                 <Logout setCurrUser={setCurrUser} setTotAccts={setTotAccts} setTotFunds={setTotFunds} />
             </div>
-        )
-    return (
-        <div>
-            { show?
-                <Login setCurrUser={setCurrUser} setShow={setShow}/>            
-                :
-                <Signup setCurrUser={setCurrUser}  setShow={setShow} />
-            }
+        }
         </div>
-    )
+        )
 }
 export default User

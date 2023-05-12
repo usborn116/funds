@@ -1,12 +1,12 @@
-import { logout } from "./helpers/api_fetches"
+import { logout } from "./helpers/helper_functions"
 
-const Logout =({setCurrUser, setTotAccts, setTotFunds})=>{
+const Logout =({setCurrUser, setTotFunds, setTotAccts})=>{
     const handleClick=e=>{
         e.preventDefault()
-         logout(setCurrUser)
+        logout(setCurrUser, [setTotFunds, setTotAccts])
     }
     return (
-        <div>
+        <div className='logout'>
             <input type="button" className="button" value='Logout' onClick={handleClick}/>
         </div>
     )

@@ -1,11 +1,13 @@
 import { useRef } from "react"
-import { newData } from "./helpers/api_fetches"
+import { newData } from "./helpers/helper_functions"
 
 const NewFund=({currUser, setFunds})=>{
     const formRef = useRef()
 
     const handleSubmit=e=>{
         e.preventDefault()
+        const popup = document.querySelectorAll('.popup')
+        popup.forEach(p => p.removeAttribute('open'))
         const formData=new FormData(formRef.current)
         const data=Object.fromEntries(formData)
         const fundInfo={

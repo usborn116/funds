@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { updateData } from "./helpers/api_fetches";
+import { updateData } from "./helpers/helper_functions";
 
 const UpdateAccount=({currUser, setAccounts, accounts, data })=>{
     const {id, name, amount } = data;
@@ -7,19 +7,19 @@ const UpdateAccount=({currUser, setAccounts, accounts, data })=>{
 
     const handleSubmit=e=>{
         e.preventDefault()
+        const popup = document.querySelectorAll('.popup')
+        popup.forEach(p => p.removeAttribute('open'))
         const formData=new FormData(formRef.current)
         const data=Object.fromEntries(formData)
         const accountInfo={
             "account":{ name: data.name, amount: data.amount, user_id: data.userid}
         }
         updateData('accounts', id, accountInfo, setAccounts)
-        const popup = document.querySelector('.popup')
-        popup.removeAttribute('open')
         e.target.reset()
     }
 
     return(
-        <div class='update'>
+        <div className='update'>
         <form ref={formRef} onSubmit={handleSubmit}>
             <h3>Edit Name/Amount</h3>
             <div className="input">

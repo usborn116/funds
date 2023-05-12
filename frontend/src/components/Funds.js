@@ -4,25 +4,34 @@ import Fund from "./Fund"
 import Login from "./Login"
 import GraphFund from "./GraphFund"
 import { useNavigate } from "react-router-dom"
-import { getData } from "./helpers/api_fetches"
+import { getData } from "./helpers/helper_functions"
+import { load } from "./helpers/helper_functions";
+import Loading from "./Loading"
 
-const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{    
+const Funds=({currUser, setCurrUser, setTotFunds, setError, setLoading, loading})=>{    
     const [funds, setFunds]=useState([])
     const navigate=useNavigate();
     setTotFunds(funds.reduce((sum, fund) => sum + fund.allocated, 0))
     useEffect(()=>{
         if(currUser)
             getData('funds', setFunds, setError)
-            console.log(funds)
-    },[currUser])
+    },[])
 
     const navhome=e=>{
         e.preventDefault()
-        navigate('/')
+        navigate('/home')
       }
+
+    useEffect(() => {
+        load(setLoading)
+    }, [])
+
     if (currUser.id){
         return(
-            <div>
+            <>
+            { loading ? 
+            <Loading /> :
+            <div className="info">
                 <h2>FUNDS</h2>
                 <button className="homebtn" onClick={navhome}>HOME</button><br></br>
                 ____________________________________
@@ -32,15 +41,17 @@ const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{
                         {funds.map((fund) =>
                             <Fund funds={funds} data={fund} currUser={currUser} key={fund.id} setFunds={setFunds}/>
                         )}
-                        <details className="new">
+                    <details className="new popup">
                         <summary>
                             + Fund
                         </summary>
                         <NewFund currUser={currUser} setCurrUser={setCurrUser} setFunds={setFunds}/>
-                        </details>
+                    </details>
                     </div>
                 </div>
             </div>
+    }
+            </>
         )
      }
     return (

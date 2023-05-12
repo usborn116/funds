@@ -1,10 +1,9 @@
 import { useRef } from "react"
-import Logout from "./Logout"
 import DeleteUser from "./DeleteUser"
 import Login from "./Login"
 import { useNavigate } from "react-router-dom"
 
-const EditUser=({setCurrUser, setShow, currUser})=>{
+const EditUser=({setCurrUser, currUser})=>{
     const navigate=useNavigate();
     const formRef = useRef()
     const signup=async (userInfo, setCurrUser)=>{
@@ -37,14 +36,10 @@ const EditUser=({setCurrUser, setShow, currUser})=>{
         signup(userInfo, setCurrUser)
         e.target.reset()
     }
-    const handleClick=e=>{
-        e.preventDefault()
-        setShow(true)
-    }
 
     const navhome=e=>{
         e.preventDefault()
-        navigate('/')
+        navigate('/home')
       }
 
     if(currUser.id)

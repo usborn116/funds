@@ -1,3 +1,11 @@
+export const load = (setter) => {
+    setter(true);
+        setTimeout(() => {
+            setter(false)
+            },500
+        )
+}
+
 export const getData= async (endpoint, setter, errsetter)=>{
     try {
         const response=await fetch(`http://localhost:3000/${endpoint}`, {
@@ -7,9 +15,8 @@ export const getData= async (endpoint, setter, errsetter)=>{
                 "authorization": localStorage.getItem("token")
             }
         })
-        if(!response.ok) throw Error
         const data=await response.json()
-        setter(() => data)
+        return setter ? setter(() => data) : data
     }
     catch(error){
         errsetter(error)
@@ -96,7 +103,7 @@ export const login = async (user, setter)=>{
     }
 }
 
-export const logout = async (setCurrUser)=>{
+export const logout = async (setCurrUser, setters)=>{
     try {
         const response=await fetch("http://localhost:3000/logout",{
             method: "delete",
@@ -108,6 +115,7 @@ export const logout = async (setCurrUser)=>{
         const data=await response.json()
         if(!response.ok) throw data.error
         localStorage.removeItem("token")
+        setters.forEach(setter => setter(0))
         setCurrUser('currUser', {name: null, id: null, email: null})  
     } catch (error) {
         console.log("error", error)
