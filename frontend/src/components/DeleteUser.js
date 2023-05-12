@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { deleteUser } from "./helpers/api_fetches";
+import { deleteUser } from "./helpers/helper_functions";
 
 const DeleteUser =({setCurrUser})=>{
     const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { updateData } from "./helpers/api_fetches";
+import { updateData } from "./helpers/helper_functions";
 
 const UpdateAccount=({currUser, setAccounts, accounts, data })=>{
     const {id, name, amount } = data;

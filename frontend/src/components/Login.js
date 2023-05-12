@@ -1,8 +1,10 @@
 import { useRef } from "react"
-import { login } from "./helpers/api_fetches"
-import { getData } from "./helpers/api_fetches"
+import { login } from "./helpers/helper_functions"
+import { getData } from "./helpers/helper_functions"
+import { useNavigate } from "react-router-dom"
 
 const Login = ({setCurrUser, setShow, setError, setTotFunds, setTotAccts}) =>{
+  const navigate = useNavigate()
   const formRef=useRef()
   const handleSubmit=e=>{
     e.preventDefault()
@@ -18,6 +20,7 @@ const Login = ({setCurrUser, setShow, setError, setTotFunds, setTotAccts}) =>{
       .then(() => getData("accounts"))
       .then((data) => setTotAccts(data.reduce((sum, account) => sum + account.amount, 0)))
       e.target.reset()
+      navigate('/home')
   }
   const handleClick=e=>{
     e.preventDefault()

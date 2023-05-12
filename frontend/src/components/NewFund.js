@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { newData } from "./helpers/api_fetches"
+import { newData } from "./helpers/helper_functions"
 
 const NewFund=({currUser, setFunds})=>{
     const formRef = useRef()

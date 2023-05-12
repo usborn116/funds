@@ -4,9 +4,11 @@ import Fund from "./Fund"
 import Login from "./Login"
 import GraphFund from "./GraphFund"
 import { useNavigate } from "react-router-dom"
-import { getData } from "./helpers/api_fetches"
+import { getData } from "./helpers/helper_functions"
+import { load } from "./helpers/helper_functions";
+import Loading from "./Loading"
 
-const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{    
+const Funds=({currUser, setCurrUser, setTotFunds, setError, setLoading, loading})=>{    
     const [funds, setFunds]=useState([])
     const navigate=useNavigate();
     setTotFunds(funds.reduce((sum, fund) => sum + fund.allocated, 0))
@@ -19,8 +21,16 @@ const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{
         e.preventDefault()
         navigate('/home')
       }
+
+    useEffect(() => {
+        load(setLoading)
+    }, [])
+
     if (currUser.id){
         return(
+            <>
+            { loading ? 
+            <Loading /> :
             <div className="info">
                 <h2>FUNDS</h2>
                 <button className="homebtn" onClick={navhome}>HOME</button><br></br>
@@ -40,6 +50,8 @@ const Funds=({currUser, setCurrUser, setTotFunds, setError})=>{
                     </div>
                 </div>
             </div>
+    }
+            </>
         )
      }
     return (

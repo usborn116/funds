@@ -1,4 +1,4 @@
-import { deleteData } from "./helpers/api_fetches"
+import { deleteData } from "./helpers/helper_functions"
 
 const DeleteAccount =({data, setAccounts, accounts })=>{
     const handleClick=e=>{

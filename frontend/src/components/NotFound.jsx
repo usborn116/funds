@@ -5,13 +5,13 @@ const NotFound = () => {
 
     const navhome=e=>{
         e.preventDefault()
-        navigate(-1)
+        navigate('/home')
       }
 
     return(
         <>
         <h1>Not Found</h1>
-        <button className="homebtn" onClick={navhome}>GO BACK</button><br></br>
+        <button className="homebtn" onClick={navhome}>HOME</button><br></br>
         </>
     )
 }

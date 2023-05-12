@@ -17,9 +17,3 @@ const Account = ({currUser, data, setAccounts, accounts}) => {
 
 }
 export default Account;
-
-/*
-
-
-
-*/

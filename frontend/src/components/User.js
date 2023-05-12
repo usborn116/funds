@@ -1,25 +1,19 @@
 import Logout from './Logout'
-import { useState, useEffect } from "react";
-import { getData } from "./helpers/api_fetches";
+import { useEffect } from "react";
+import { load } from "./helpers/helper_functions";
 import NavBar from "../NavBar";
 import Loading from './Loading';
 
-const User = ({currUser, setCurrUser, totFunds, setTotFunds, totAccts, setTotAccts, setError}) => {
-    const [loading, setLoading] = useState(true);
+const User = ({currUser, setCurrUser, totFunds, setTotFunds, totAccts, setTotAccts, setLoading, loading}) => {
 
     useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false)
-            },250
-        )
-    }, [])
+        load(setLoading)
+    }, [setLoading])
 
     return (
         <div className="user">
-        { loading ?
-        <Loading />
-        :
+        { loading ? 
+        <Loading /> :
         <div className="main">
             <div className="greet">
                     <h1>Hello {currUser.name}!</h1>
@@ -37,7 +31,7 @@ const User = ({currUser, setCurrUser, totFunds, setTotFunds, totAccts, setTotAcc
                 </div>
                 <Logout setCurrUser={setCurrUser} setTotAccts={setTotAccts} setTotFunds={setTotFunds} />
             </div>
-            }
+        }
         </div>
         )
 }

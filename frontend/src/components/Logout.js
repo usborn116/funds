@@ -1,4 +1,4 @@
-import { logout } from "./helpers/api_fetches"
+import { logout } from "./helpers/helper_functions"
 
 const Logout =({setCurrUser, setTotFunds, setTotAccts})=>{
     const handleClick=e=>{

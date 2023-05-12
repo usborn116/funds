@@ -7,6 +7,12 @@
 #596475 (GRAY)
 #8D94BA (COOL GRAY)
 */
+body{
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -172,10 +178,15 @@ form{
 }
 
 .logout{
-  width: 40vw;
+  width: 100%;
   align-self: center;
+  margin-left: 0px;
   display: flex;
   justify-content: center;
+}
+
+.logout button{
+  width: 50vw;
 }
 
 .submit:hover, .button:hover, .edit:hover{
@@ -363,10 +374,10 @@ details > summary::-webkit-details-marker {
 }
 
 .spinner {
-  width: 64px;
-  height: 64px;
+  width: 30vh;
+  height: 30vh;
   border: 8px solid;
-  border-color: #3d5af1 transparent #3d5af1 transparent;
+  border-color: #5b8266 transparent #5b8266 transparent;
   border-radius: 50%;
   animation: spin-anim 1.2s linear infinite;
 }

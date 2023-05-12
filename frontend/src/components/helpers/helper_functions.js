@@ -1,3 +1,11 @@
+export const load = (setter) => {
+    setter(true);
+        setTimeout(() => {
+            setter(false)
+            },500
+        )
+}
+
 export const getData= async (endpoint, setter, errsetter)=>{
     try {
         const response=await fetch(`http://localhost:3000/${endpoint}`, {
